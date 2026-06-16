@@ -10,10 +10,13 @@
   <main>
     <header>
       <h1>🚇 Metrordle</h1>
-      <p class="tagline">Guess the secret WMATA Metro station.</p>
+      <p class="tagline">Guess the secret transit station.</p>
     </header>
 
     <section class="controls">
+      <label for="system">Transit system</label>
+      <select id="system" class="system-select"></select>
+
       <label for="station">Your guess</label>
       <div class="guess-row">
         <div class="combobox" id="combobox">

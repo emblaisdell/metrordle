@@ -1,10 +1,16 @@
-"""WMATA Metro station data, loaded from the static ``stations.json`` file.
+"""Transit systems and their station data, loaded from ``data/*.json``.
 
-Each station has a canonical ``name``, the set of ``lines`` that serve it
-(current, post-2023 service pattern), and its approximate ``lat``/``lon``.
-Coordinates are good enough for relative compass directions between stations.
+Each JSON file describes one transit *system* (e.g. WMATA, Philadelphia) with:
 
-Line colors: Red, Orange, Silver, Blue, Yellow, Green.
+    {
+      "key": "wmata",
+      "name": "Washington Metro (WMATA)",
+      "colors": {"Red": "#e51937", ...},   # line name -> hex color
+      "stations": [{name, lines, lat, lon, aliases}, ...]
+    }
+
+WMATA is the default system. Coordinates only need to be accurate enough to
+resolve relative compass directions between stations within a system.
 """
 
 from __future__ import annotations
@@ -14,7 +20,9 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-_DATA_FILE = Path(__file__).with_name("stations.json")
+_DATA_DIR = Path(__file__).with_name("data")
+
+DEFAULT_SYSTEM = "wmata"
 
 
 @dataclass(frozen=True)
@@ -26,24 +34,6 @@ class Station:
     aliases: tuple[str, ...] = field(default=())
 
 
-def _load_stations() -> list[Station]:
-    with _DATA_FILE.open(encoding="utf-8") as f:
-        raw = json.load(f)
-    return [
-        Station(
-            name=entry["name"],
-            lines=tuple(entry["lines"]),
-            lat=float(entry["lat"]),
-            lon=float(entry["lon"]),
-            aliases=tuple(entry.get("aliases", ())),
-        )
-        for entry in raw
-    ]
-
-
-STATIONS: list[Station] = _load_stations()
-
-
 def _normalize(text: str) -> str:
     """Lowercase, drop punctuation, and collapse whitespace for matching."""
     text = text.strip().lower()
@@ -52,19 +42,63 @@ def _normalize(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-# Lookup table from any normalized name/alias to the canonical Station.
-_LOOKUP: dict[str, Station] = {}
-for _s in STATIONS:
-    for _key in (_s.name, *_s.aliases):
-        _LOOKUP[_normalize(_key)] = _s
+class System:
+    """A transit system: its stations, line colors, and name resolution."""
+
+    def __init__(self, key: str, name: str, colors: dict[str, str], stations: list[Station]):
+        self.key = key
+        self.name = name
+        self.colors = colors
+        self.stations = stations
+        self._lookup: dict[str, Station] = {}
+        for station in stations:
+            for alias in (station.name, *station.aliases):
+                self._lookup[_normalize(alias)] = station
+
+    def find(self, query: str) -> Station | None:
+        """Resolve a user-supplied station name (or alias) within this system."""
+        if not query:
+            return None
+        return self._lookup.get(_normalize(query))
+
+    def names(self) -> list[str]:
+        return [s.name for s in self.stations]
 
 
-def find_station(query: str) -> Station | None:
-    """Resolve a user-supplied station name (or alias) to a Station, or None."""
-    if not query:
-        return None
-    return _LOOKUP.get(_normalize(query))
+def _load_system(path: Path) -> System:
+    with path.open(encoding="utf-8") as f:
+        data = json.load(f)
+    stations = [
+        Station(
+            name=entry["name"],
+            lines=tuple(entry["lines"]),
+            lat=float(entry["lat"]),
+            lon=float(entry["lon"]),
+            aliases=tuple(entry.get("aliases", ())),
+        )
+        for entry in data["stations"]
+    ]
+    return System(
+        key=data["key"],
+        name=data["name"],
+        colors=dict(data.get("colors", {})),
+        stations=stations,
+    )
 
 
-def all_station_names() -> list[str]:
-    return [s.name for s in STATIONS]
+SYSTEMS: dict[str, System] = {
+    system.key: system
+    for system in (_load_system(p) for p in sorted(_DATA_DIR.glob("*.json")))
+}
+
+if DEFAULT_SYSTEM not in SYSTEMS:
+    raise RuntimeError(f"default system {DEFAULT_SYSTEM!r} missing from {_DATA_DIR}")
+
+
+def get_system(key: str | None) -> System | None:
+    """Return the named system, or the default when ``key`` is None/empty."""
+    return SYSTEMS.get(key or DEFAULT_SYSTEM)
+
+
+def list_systems() -> list[System]:
+    return list(SYSTEMS.values())

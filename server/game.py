@@ -7,7 +7,7 @@ import random
 import uuid
 from dataclasses import dataclass, field
 
-from .stations import STATIONS, Station
+from .stations import Station, System
 
 # 8 semi-cardinal directions, in clockwise order starting at North.
 _COMPASS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
@@ -76,6 +76,7 @@ class Guess:
 @dataclass
 class Game:
     id: str
+    system: System
     target: Station
     guesses: list[Guess] = field(default_factory=list)
 
@@ -104,6 +105,8 @@ class Game:
     def to_dict(self, reveal: bool = False) -> dict:
         data = {
             "id": self.id,
+            "system": self.system.key,
+            "system_name": self.system.name,
             "solved": self.solved,
             "gave_up": self.gave_up,
             "guess_count": len(self.guesses),
@@ -121,11 +124,11 @@ class GameStore:
         self._games: dict[str, Game] = {}
         self._rng = rng or random.Random()
 
-    def create(self, seed: int | None = None) -> Game:
+    def create(self, system: System, seed: int | None = None) -> Game:
         rng = random.Random(seed) if seed is not None else self._rng
-        target = rng.choice(STATIONS)
+        target = rng.choice(system.stations)
         game_id = uuid.uuid4().hex
-        game = Game(id=game_id, target=target)
+        game = Game(id=game_id, system=system, target=target)
         self._games[game_id] = game
         return game
 

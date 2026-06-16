@@ -9,6 +9,7 @@ const ARROWS = {
 
 const els = {
   api: document.getElementById("api"),
+  system: document.getElementById("system"),
   station: document.getElementById("station"),
   combobox: document.getElementById("combobox"),
   suggestions: document.getElementById("suggestions"),
@@ -21,9 +22,12 @@ const els = {
 
 let gameId = null;
 let gameOver = false;
-let allStations = [];   // [{ name, lines }]
-let suggestions = [];   // currently shown stations
-let activeIndex = -1;   // highlighted suggestion
+let allStations = [];     // [{ name, lines }] for the current system
+let lineColors = {};      // line name -> hex color for the current system
+let suggestions = [];     // currently shown stations
+let activeIndex = -1;     // highlighted suggestion
+
+const currentSystem = () => els.system.value;
 
 const apiBase = () => els.api.value.replace(/\/$/, "");
 
@@ -52,7 +56,7 @@ function setGameOver(over) {
 
 function lineDots(lines) {
   return lines
-    .map((l) => `<span class="line-dot" style="background:var(--${l})" title="${l}"></span>`)
+    .map((l) => `<span class="line-dot" style="background:${lineColors[l] || "#888"}" title="${l}"></span>`)
     .join("");
 }
 
@@ -76,12 +80,25 @@ function renderGuess(result, number) {
   els.body.prepend(tr);
 }
 
-async function loadStations() {
+async function loadSystems() {
   try {
-    const data = await api("/stations");
-    allStations = data.stations;
+    const data = await api("/systems");
+    els.system.innerHTML = data.systems
+      .map((s) => `<option value="${s.key}">${s.name}</option>`)
+      .join("");
+    els.system.value = data.default;   // WMATA is the default
   } catch (err) {
     setMessage("Could not reach API at " + apiBase() + ": " + err.message, "bad");
+  }
+}
+
+async function loadStations() {
+  try {
+    const data = await api(`/stations?system=${encodeURIComponent(currentSystem())}`);
+    allStations = data.stations;
+    lineColors = data.colors || {};
+  } catch (err) {
+    setMessage("Could not load stations: " + err.message, "bad");
   }
 }
 
@@ -176,16 +193,26 @@ document.addEventListener("click", (e) => {
 
 async function newGame() {
   try {
-    const game = await api("/games", { method: "POST", body: "{}" });
+    const game = await api("/games", {
+      method: "POST",
+      body: JSON.stringify({ system: currentSystem() }),
+    });
     gameId = game.id;
     setGameOver(false);
     els.body.innerHTML = "";
     els.empty.hidden = false;
-    setMessage("New game started. Good luck!", "good");
+    setMessage(`New ${game.system_name} game started. Good luck!`, "good");
+    els.station.value = "";
     els.station.focus();
   } catch (err) {
     setMessage("Failed to start game: " + err.message, "bad");
   }
+}
+
+// Switching systems reloads that system's stations, then starts a fresh game.
+async function changeSystem() {
+  await loadStations();
+  await newGame();
 }
 
 async function submitGuess() {
@@ -236,7 +263,8 @@ els.station.addEventListener("keydown", (e) => {
   }
 });
 els.newBtn.addEventListener("click", newGame);
-els.api.addEventListener("change", loadStations);
+els.system.addEventListener("change", changeSystem);
+els.api.addEventListener("change", async () => { await loadSystems(); await changeSystem(); });
 
-// Boot up.
-loadStations().then(newGame);
+// Boot up: discover systems (defaults to WMATA), load its stations, start a game.
+loadSystems().then(loadStations).then(newGame);

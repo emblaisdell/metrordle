@@ -1,0 +1,753 @@
+{
+  "key": "philly",
+  "name": "Philadelphia (SEPTA & PATCO)",
+  "colors": {
+    "Market-Frankford": "#1c6cb3",
+    "Broad Street": "#f58220",
+    "PATCO": "#d31245",
+    "Norristown": "#6b3fa0"
+  },
+  "stations": [
+    {
+      "name": "69th Street Transportation Center",
+      "lines": [
+        "Market-Frankford",
+        "Norristown"
+      ],
+      "lat": 39.9606,
+      "lon": -75.2575,
+      "aliases": [
+        "69th Street"
+      ]
+    },
+    {
+      "name": "Millbourne",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9617,
+      "lon": -75.252,
+      "aliases": []
+    },
+    {
+      "name": "63rd Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9636,
+      "lon": -75.2467,
+      "aliases": []
+    },
+    {
+      "name": "60th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9619,
+      "lon": -75.239,
+      "aliases": []
+    },
+    {
+      "name": "56th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9613,
+      "lon": -75.2308,
+      "aliases": []
+    },
+    {
+      "name": "52nd Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9607,
+      "lon": -75.2231,
+      "aliases": []
+    },
+    {
+      "name": "46th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9601,
+      "lon": -75.2129,
+      "aliases": []
+    },
+    {
+      "name": "40th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9569,
+      "lon": -75.2025,
+      "aliases": []
+    },
+    {
+      "name": "34th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9564,
+      "lon": -75.1922,
+      "aliases": []
+    },
+    {
+      "name": "30th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9555,
+      "lon": -75.184,
+      "aliases": [
+        "30th Street Station"
+      ]
+    },
+    {
+      "name": "15th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9526,
+      "lon": -75.1652,
+      "aliases": []
+    },
+    {
+      "name": "13th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9512,
+      "lon": -75.1622,
+      "aliases": []
+    },
+    {
+      "name": "11th Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9512,
+      "lon": -75.1582,
+      "aliases": []
+    },
+    {
+      "name": "8th Street",
+      "lines": [
+        "Market-Frankford",
+        "Broad Street",
+        "PATCO"
+      ],
+      "lat": 39.9518,
+      "lon": -75.1535,
+      "aliases": [
+        "8th & Market",
+        "8th and Market"
+      ]
+    },
+    {
+      "name": "5th Street/Independence Hall",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9498,
+      "lon": -75.149,
+      "aliases": [
+        "5th Street"
+      ]
+    },
+    {
+      "name": "2nd Street",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9496,
+      "lon": -75.1432,
+      "aliases": []
+    },
+    {
+      "name": "Spring Garden (Market-Frankford)",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9614,
+      "lon": -75.1419,
+      "aliases": []
+    },
+    {
+      "name": "Girard (Market-Frankford)",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.97,
+      "lon": -75.134,
+      "aliases": []
+    },
+    {
+      "name": "Berks",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9772,
+      "lon": -75.13,
+      "aliases": []
+    },
+    {
+      "name": "York-Dauphin",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9905,
+      "lon": -75.124,
+      "aliases": []
+    },
+    {
+      "name": "Huntingdon",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.9943,
+      "lon": -75.1206,
+      "aliases": []
+    },
+    {
+      "name": "Somerset",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 39.998,
+      "lon": -75.117,
+      "aliases": []
+    },
+    {
+      "name": "Allegheny (Market-Frankford)",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.0073,
+      "lon": -75.1112,
+      "aliases": []
+    },
+    {
+      "name": "Tioga",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.011,
+      "lon": -75.1086,
+      "aliases": []
+    },
+    {
+      "name": "Erie-Torresdale",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.0179,
+      "lon": -75.101,
+      "aliases": []
+    },
+    {
+      "name": "Church",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.024,
+      "lon": -75.0936,
+      "aliases": []
+    },
+    {
+      "name": "Margaret-Orthodox",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.027,
+      "lon": -75.0855,
+      "aliases": []
+    },
+    {
+      "name": "Frankford Transportation Center",
+      "lines": [
+        "Market-Frankford"
+      ],
+      "lat": 40.0254,
+      "lon": -75.078,
+      "aliases": [
+        "Frankford"
+      ]
+    },
+    {
+      "name": "Fern Rock Transportation Center",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0419,
+      "lon": -75.1397,
+      "aliases": [
+        "Fern Rock"
+      ]
+    },
+    {
+      "name": "Olney Transportation Center",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0344,
+      "lon": -75.1419,
+      "aliases": [
+        "Olney"
+      ]
+    },
+    {
+      "name": "Logan",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0276,
+      "lon": -75.1437,
+      "aliases": []
+    },
+    {
+      "name": "Wyoming",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0203,
+      "lon": -75.1455,
+      "aliases": []
+    },
+    {
+      "name": "Hunting Park",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0144,
+      "lon": -75.147,
+      "aliases": []
+    },
+    {
+      "name": "Erie",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0073,
+      "lon": -75.149,
+      "aliases": []
+    },
+    {
+      "name": "Allegheny (Broad Street)",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 40.0024,
+      "lon": -75.1505,
+      "aliases": []
+    },
+    {
+      "name": "North Philadelphia",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9979,
+      "lon": -75.153,
+      "aliases": []
+    },
+    {
+      "name": "Susquehanna-Dauphin",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9886,
+      "lon": -75.156,
+      "aliases": []
+    },
+    {
+      "name": "Cecil B. Moore",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9799,
+      "lon": -75.1588,
+      "aliases": [
+        "Cecil B Moore",
+        "Temple University"
+      ]
+    },
+    {
+      "name": "Girard (Broad Street)",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9706,
+      "lon": -75.161,
+      "aliases": []
+    },
+    {
+      "name": "Fairmount",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.967,
+      "lon": -75.1622,
+      "aliases": []
+    },
+    {
+      "name": "Spring Garden (Broad Street)",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9614,
+      "lon": -75.1628,
+      "aliases": []
+    },
+    {
+      "name": "Race-Vine",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9558,
+      "lon": -75.1632,
+      "aliases": [
+        "Race Vine"
+      ]
+    },
+    {
+      "name": "City Hall",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9526,
+      "lon": -75.1635,
+      "aliases": []
+    },
+    {
+      "name": "Walnut-Locust",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9486,
+      "lon": -75.1646,
+      "aliases": []
+    },
+    {
+      "name": "Lombard-South",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9437,
+      "lon": -75.1656,
+      "aliases": []
+    },
+    {
+      "name": "Ellsworth-Federal",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9347,
+      "lon": -75.1672,
+      "aliases": []
+    },
+    {
+      "name": "Tasker-Morris",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9265,
+      "lon": -75.1686,
+      "aliases": []
+    },
+    {
+      "name": "Snyder",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9202,
+      "lon": -75.1697,
+      "aliases": []
+    },
+    {
+      "name": "Oregon",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9134,
+      "lon": -75.171,
+      "aliases": []
+    },
+    {
+      "name": "NRG",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.905,
+      "lon": -75.172,
+      "aliases": [
+        "Pattison",
+        "AT&T Station",
+        "NRG Station"
+      ]
+    },
+    {
+      "name": "Chinatown",
+      "lines": [
+        "Broad Street"
+      ],
+      "lat": 39.9555,
+      "lon": -75.1555,
+      "aliases": [
+        "8th & Vine"
+      ]
+    },
+    {
+      "name": "15-16th & Locust",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.9486,
+      "lon": -75.167,
+      "aliases": [
+        "16th & Locust"
+      ]
+    },
+    {
+      "name": "12-13th & Locust",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.9479,
+      "lon": -75.162,
+      "aliases": [
+        "13th & Locust"
+      ]
+    },
+    {
+      "name": "9-10th & Locust",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.9475,
+      "lon": -75.157,
+      "aliases": [
+        "10th & Locust"
+      ]
+    },
+    {
+      "name": "City Hall (Camden)",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.9456,
+      "lon": -75.1199,
+      "aliases": []
+    },
+    {
+      "name": "Broadway",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.943,
+      "lon": -75.1199,
+      "aliases": [
+        "Walter Rand"
+      ]
+    },
+    {
+      "name": "Ferry Avenue",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.9211,
+      "lon": -75.0967,
+      "aliases": []
+    },
+    {
+      "name": "Collingswood",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.917,
+      "lon": -75.071,
+      "aliases": []
+    },
+    {
+      "name": "Westmont",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.908,
+      "lon": -75.056,
+      "aliases": []
+    },
+    {
+      "name": "Haddonfield",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.897,
+      "lon": -75.038,
+      "aliases": []
+    },
+    {
+      "name": "Woodcrest",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.887,
+      "lon": -75.002,
+      "aliases": []
+    },
+    {
+      "name": "Ashland",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.877,
+      "lon": -74.999,
+      "aliases": []
+    },
+    {
+      "name": "Lindenwold",
+      "lines": [
+        "PATCO"
+      ],
+      "lat": 39.835,
+      "lon": -74.999,
+      "aliases": []
+    },
+    {
+      "name": "Parkview",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.956,
+      "lon": -75.268,
+      "aliases": []
+    },
+    {
+      "name": "Drexel Hill Junction",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.94,
+      "lon": -75.299,
+      "aliases": []
+    },
+    {
+      "name": "Clifton-Aldan",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.929,
+      "lon": -75.295,
+      "aliases": []
+    },
+    {
+      "name": "Aronimink",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.956,
+      "lon": -75.301,
+      "aliases": []
+    },
+    {
+      "name": "Ardmore Junction",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.997,
+      "lon": -75.289,
+      "aliases": []
+    },
+    {
+      "name": "Ardmore Avenue",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 39.993,
+      "lon": -75.295,
+      "aliases": []
+    },
+    {
+      "name": "Bryn Mawr",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.019,
+      "lon": -75.322,
+      "aliases": []
+    },
+    {
+      "name": "Villanova",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.037,
+      "lon": -75.345,
+      "aliases": []
+    },
+    {
+      "name": "Radnor",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.044,
+      "lon": -75.362,
+      "aliases": []
+    },
+    {
+      "name": "County Line",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.056,
+      "lon": -75.36,
+      "aliases": []
+    },
+    {
+      "name": "Gulph Mills",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.079,
+      "lon": -75.364,
+      "aliases": []
+    },
+    {
+      "name": "Hughes Park",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.09,
+      "lon": -75.358,
+      "aliases": []
+    },
+    {
+      "name": "Bridgeport",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.102,
+      "lon": -75.338,
+      "aliases": []
+    },
+    {
+      "name": "DeKalb Street",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.11,
+      "lon": -75.338,
+      "aliases": []
+    },
+    {
+      "name": "Norristown Transportation Center",
+      "lines": [
+        "Norristown"
+      ],
+      "lat": 40.1153,
+      "lon": -75.3424,
+      "aliases": [
+        "Norristown"
+      ]
+    }
+  ]
+}

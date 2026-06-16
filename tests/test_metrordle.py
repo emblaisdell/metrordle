@@ -1,58 +1,74 @@
 """Tests for Metrordle game logic and the REST API."""
 
+import random
+
 import pytest
 
 from server import create_app
 from server.game import GameStore, bearing_to_direction, compare_lines
-from server.stations import find_station
+from server.stations import DEFAULT_SYSTEM, get_system
+
+WMATA = get_system("wmata")
+PHILLY = get_system("philly")
 
 
-# ---- station lookup ----
+# ---- systems & station lookup ----
+
+def test_systems_loaded():
+    assert DEFAULT_SYSTEM == "wmata"
+    assert WMATA is not None and PHILLY is not None
+    assert get_system(None) is WMATA          # default
+    assert get_system("nope") is None
+
 
 def test_find_station_by_name_and_alias():
-    assert find_station("Metro Center").name == "Metro Center"
-    assert find_station("  metro  center ").name == "Metro Center"
-    assert find_station("Chinatown").name == "Gallery Place"
-    assert find_station("L'Enfant Plaza").name == "L'Enfant Plaza"
-    assert find_station("lenfant").name == "L'Enfant Plaza"
-    assert find_station("does not exist") is None
+    assert WMATA.find("Metro Center").name == "Metro Center"
+    assert WMATA.find("  metro  center ").name == "Metro Center"
+    assert WMATA.find("Chinatown").name == "Gallery Place"
+    assert WMATA.find("lenfant").name == "L'Enfant Plaza"
+    assert WMATA.find("does not exist") is None
+    # 'Chinatown' resolves differently per system (no cross-system leakage).
+    assert PHILLY.find("Chinatown").name == "Chinatown"
+    assert PHILLY.find("Metro Center") is None
 
 
 # ---- line comparison ----
 
 def test_compare_lines_all_some_none():
-    metro_center = find_station("Metro Center")      # Red, Orange, Silver, Blue
-    gallery_place = find_station("Gallery Place")     # Red, Green, Yellow
-    farragut_west = find_station("Farragut West")     # Blue, Orange, Silver
-    rosslyn = find_station("Rosslyn")                 # Blue, Orange, Silver
-    branch_ave = find_station("Branch Avenue")        # Green
+    metro_center = WMATA.find("Metro Center")      # Red, Orange, Silver, Blue
+    gallery_place = WMATA.find("Gallery Place")     # Red, Green, Yellow
+    farragut_west = WMATA.find("Farragut West")     # Blue, Orange, Silver
+    rosslyn = WMATA.find("Rosslyn")                 # Blue, Orange, Silver
+    branch_ave = WMATA.find("Branch Avenue")        # Green
 
-    # identical line sets
     match, shared = compare_lines(farragut_west, rosslyn)
     assert match == "all"
     assert set(shared) == {"Blue", "Orange", "Silver"}
 
-    # overlapping but not identical
     match, shared = compare_lines(metro_center, gallery_place)
     assert match == "some"
     assert shared == ["Red"]
 
-    # disjoint
     match, _ = compare_lines(metro_center, branch_ave)
     assert match == "none"
+
+
+def test_philly_multiline_hub():
+    eighth = PHILLY.find("8th Street")             # MFL + Broad St + PATCO
+    assert set(eighth.lines) == {"Market-Frankford", "Broad Street", "PATCO"}
 
 
 # ---- direction ----
 
 def test_bearing_directions():
-    shady_grove = find_station("Shady Grove")     # far NW
-    branch_ave = find_station("Branch Avenue")    # far SE
+    shady_grove = WMATA.find("Shady Grove")     # far NW
+    branch_ave = WMATA.find("Branch Avenue")    # far SE
     assert bearing_to_direction(branch_ave, shady_grove) in {"NW", "N", "W"}
     assert bearing_to_direction(shady_grove, branch_ave) in {"SE", "S", "E"}
 
 
 def test_bearing_same_station_is_none():
-    mc = find_station("Metro Center")
+    mc = WMATA.find("Metro Center")
     assert bearing_to_direction(mc, mc) is None
 
 
@@ -60,39 +76,46 @@ def test_bearing_same_station_is_none():
 
 @pytest.fixture
 def client():
-    # Seed the store's RNG so games are deterministic across the test.
-    import random
     app = create_app(GameStore(rng=random.Random(0)))
     app.config.update(TESTING=True)
     return app.test_client()
 
 
-def test_index_and_stations(client):
+def test_index_and_systems(client):
     assert client.get("/").status_code == 200
-    resp = client.get("/stations")
-    body = resp.get_json()
-    assert resp.status_code == 200
-    assert body["count"] == len(body["stations"]) > 0
+    body = client.get("/systems").get_json()
+    assert body["default"] == "wmata"
+    keys = {s["key"] for s in body["systems"]}
+    assert {"wmata", "philly"} <= keys
+
+
+def test_stations_per_system(client):
+    wmata = client.get("/stations").get_json()           # default
+    assert wmata["system"] == "wmata"
+    assert wmata["count"] == len(wmata["stations"]) > 0
+    assert "Red" in wmata["colors"]
+
+    philly = client.get("/stations?system=philly").get_json()
+    assert philly["system"] == "philly"
+    assert "Market-Frankford" in philly["colors"]
+
+    assert client.get("/stations?system=bogus").status_code == 404
 
 
 def test_full_game_flow_with_seed(client):
-    # Deterministic target via explicit seed.
     create = client.post("/games", json={"seed": 42})
     assert create.status_code == 201
+    assert create.get_json()["system"] == "wmata"   # default system
     game_id = create.get_json()["id"]
     assert "answer" not in create.get_json()
 
-    # A guess returns the two required pieces of info.
     resp = client.post(f"/games/{game_id}/guesses", json={"station": "Metro Center"})
-    body = resp.get_json()
+    result = resp.get_json()["result"]
     assert resp.status_code == 200
-    result = body["result"]
     assert result["line_match"] in {"all", "some", "none"}
     assert result["direction"] in {None, "N", "NE", "E", "SE", "S", "SW", "W", "NW"}
 
-    # Find out the answer, then guess it to win.
     answer = client.post(f"/games/{game_id}/give-up").get_json()["answer"]
-    # give-up ends the game, so start a fresh seeded game to test the win path.
     game_id = client.post("/games", json={"seed": 42}).get_json()["id"]
     win = client.post(f"/games/{game_id}/guesses", json={"station": answer}).get_json()
     assert win["solved"] is True
@@ -101,10 +124,24 @@ def test_full_game_flow_with_seed(client):
     assert win["answer"] == answer
 
 
+def test_philly_game(client):
+    create = client.post("/games", json={"system": "philly", "seed": 1})
+    assert create.status_code == 201
+    game_id = create.get_json()["id"]
+    # A Philly station is valid here; a WMATA-only station is not.
+    ok = client.post(f"/games/{game_id}/guesses", json={"station": "8th Street"})
+    assert ok.status_code == 200
+    bad = client.post(f"/games/{game_id}/guesses", json={"station": "Shady Grove"})
+    assert bad.status_code == 422
+
+
+def test_unknown_system_on_create_returns_400(client):
+    assert client.post("/games", json={"system": "bogus"}).status_code == 400
+
+
 def test_unknown_station_returns_422(client):
     gid = client.post("/games").get_json()["id"]
-    resp = client.post(f"/games/{gid}/guesses", json={"station": "Hogwarts"})
-    assert resp.status_code == 422
+    assert client.post(f"/games/{gid}/guesses", json={"station": "Hogwarts"}).status_code == 422
 
 
 def test_guess_after_game_over_returns_409(client):

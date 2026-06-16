@@ -5,7 +5,7 @@ from __future__ import annotations
 from flask import Flask, jsonify, request
 
 from .game import GameStore
-from .stations import STATIONS, find_station
+from .stations import DEFAULT_SYSTEM, get_system, list_systems
 
 
 def create_app(store: GameStore | None = None) -> Flask:
@@ -31,12 +31,14 @@ def create_app(store: GameStore | None = None) -> Flask:
         """Discoverable API root describing the available endpoints."""
         return jsonify({
             "name": "Metrordle",
-            "description": "Guess the secret WMATA Metro station. Each guess "
-                           "reports whether you share all/some/no lines, and "
-                           "which of 8 compass directions the answer lies in.",
+            "description": "Guess the secret transit station. Each guess reports "
+                           "whether you share all/some/no lines, and which of 8 "
+                           "compass directions the answer lies in.",
+            "default_system": DEFAULT_SYSTEM,
             "endpoints": {
-                "GET /stations": "List all guessable stations and their lines.",
-                "POST /games": "Start a new game. Optional JSON {\"seed\": int}.",
+                "GET /systems": "List available transit systems.",
+                "GET /stations?system=<key>": "List guessable stations for a system.",
+                "POST /games": "Start a game. Optional JSON {\"system\": key, \"seed\": int}.",
                 "GET /games/<id>": "Get current game state.",
                 "POST /games/<id>/guesses": "Submit a guess: JSON {\"station\": name}.",
                 "POST /games/<id>/give-up": "Reveal the answer and end the game.",
@@ -44,12 +46,29 @@ def create_app(store: GameStore | None = None) -> Flask:
             },
         })
 
+    @app.get("/systems")
+    def list_all_systems():
+        return jsonify({
+            "default": DEFAULT_SYSTEM,
+            "systems": [
+                {"key": s.key, "name": s.name, "station_count": len(s.stations)}
+                for s in list_systems()
+            ],
+        })
+
     @app.get("/stations")
     def list_stations():
+        key = request.args.get("system")
+        system = get_system(key)
+        if system is None:
+            return jsonify({"error": f"unknown system: {key!r}"}), 404
         return jsonify({
-            "count": len(STATIONS),
+            "system": system.key,
+            "system_name": system.name,
+            "colors": system.colors,
+            "count": len(system.stations),
             "stations": [
-                {"name": s.name, "lines": list(s.lines)} for s in STATIONS
+                {"name": s.name, "lines": list(s.lines)} for s in system.stations
             ],
         })
 
@@ -59,7 +78,11 @@ def create_app(store: GameStore | None = None) -> Flask:
         seed = body.get("seed")
         if seed is not None and not isinstance(seed, int):
             return jsonify({"error": "seed must be an integer"}), 400
-        game = games.create(seed=seed)
+        key = body.get("system")
+        system = get_system(key)
+        if system is None:
+            return jsonify({"error": f"unknown system: {key!r}"}), 400
+        game = games.create(system, seed=seed)
         return jsonify(game.to_dict()), 201
 
     @app.get("/games/<game_id>")
@@ -82,11 +105,11 @@ def create_app(store: GameStore | None = None) -> Flask:
         if not isinstance(name, str) or not name.strip():
             return jsonify({"error": "request body must include a station name"}), 400
 
-        station = find_station(name)
+        station = game.system.find(name)
         if station is None:
             return jsonify({
                 "error": f"unknown station: {name!r}",
-                "hint": "GET /stations lists valid names.",
+                "hint": f"GET /stations?system={game.system.key} lists valid names.",
             }), 422
 
         guess = game.make_guess(station)
