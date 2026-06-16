@@ -315,13 +315,20 @@ function newGame() {
   setGameOver(false);
   els.body.innerHTML = "";
   els.empty.hidden = false;
-  const scope = subset ? `${subset.size} line${subset.size === 1 ? "" : "s"}` : "all lines";
-  setMessage(`New ${sys().name} game (${scope}). Good luck!`, "good");
+  setMessage("");   // clear any prior win/error message
   els.station.value = "";
+}
+
+// Reflect the chosen system in the URL (for sharing) without reloading.
+function updateSystemUrl() {
+  const url = new URL(window.location);
+  url.searchParams.set("system", currentSystem());
+  history.replaceState(null, "", url);
 }
 
 // Switching systems reloads that system's stations, then starts a fresh game.
 function changeSystem() {
+  updateSystemUrl();
   loadStations();
   newGame();
 }
@@ -358,8 +365,6 @@ function submitGuess() {
     game.over = true;
     setGameOver(true);
     setMessage(`🎉 Solved in ${game.guesses} guess${game.guesses === 1 ? "" : "es"}! It was ${game.target.name}.`, "good");
-  } else {
-    setMessage(`${match} lines in common · answer is to the ${direction}.`);
   }
 }
 
@@ -391,7 +396,22 @@ els.system.addEventListener("change", changeSystem);
 
 // ---- Boot: load the static data files, then start a game ----
 
+function setLoading(on) {
+  els.system.disabled = on;
+  els.station.disabled = on;
+  els.guessBtn.disabled = on;
+  if (on) {
+    els.system.innerHTML = `<option>Loading…</option>`;
+    els.station.placeholder = "Loading stations…";
+    els.empty.textContent = "Loading stations…";
+  } else {
+    els.station.placeholder = "Start typing a station…";
+    els.empty.textContent = "No guesses yet. Make your first guess above.";
+  }
+}
+
 async function boot() {
+  setLoading(true);
   try {
     const loaded = await Promise.all(DATA_FILES.map((f) =>
       fetch(f).then((r) => {
@@ -403,13 +423,19 @@ async function boot() {
       systems[d.key] = d;
       systemOrder.push(d.key);
     }
+    setLoading(false);
     els.system.innerHTML = systemOrder
       .map((k) => `<option value="${k}">${systems[k].name}</option>`)
       .join("");
-    els.system.value = systemOrder[0];   // WMATA is the default
+    // Honor a ?system=<key> in the URL (for shared links); else default to WMATA.
+    const requested = new URLSearchParams(location.search).get("system");
+    els.system.value = (requested && systems[requested]) ? requested : systemOrder[0];
+    updateSystemUrl();   // normalize the URL (e.g. fill it in / drop bad values)
     loadStations();
     newGame();
   } catch (err) {
+    els.system.innerHTML = `<option>—</option>`;
+    els.empty.textContent = "Couldn't load stations.";
     setMessage("Could not load station data: " + err.message, "bad");
   }
 }

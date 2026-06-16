@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: center;
   padding: 2rem 1rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 main { width: 100%; max-width: 720px; }
@@ -63,6 +64,9 @@ input:focus { outline: 2px solid var(--accent); }
   cursor: pointer;
 }
 .system-select:focus { outline: 2px solid var(--accent); }
+
+/* Bottom settings panel: no trailing margin on the last control. */
+.settings .line-details { margin-bottom: 0; }
 
 /* Collapsible line filter */
 .line-details { margin-bottom: 1rem; }
@@ -162,6 +166,7 @@ button.secondary { background: transparent; border: 1px solid var(--border); col
 
 .actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
 .message { min-height: 1.2rem; margin: 0.75rem 0 0; font-weight: 600; }
+.message:empty { display: none; }   /* no reserved space when there's no message */
 .message.good { color: var(--good); }
 .message.bad { color: var(--bad); }
 
@@ -205,3 +210,30 @@ tr.correct td { background: rgba(62,196,109,0.12); }
 
 .empty { color: var(--muted); text-align: center; margin: 0.5rem 0; }
 footer input { font-size: 0.85rem; }
+
+/* Let long station names wrap rather than force the table wide. */
+#guess-table td:nth-child(2) { overflow-wrap: anywhere; }
+
+/* ---- Mobile ---- */
+@media (max-width: 520px) {
+  body { padding: 1rem 0.75rem; }
+  header { margin-bottom: 1rem; }
+  h1 { font-size: 1.8rem; }
+
+  .controls, .guesses { padding: 0.85rem 0.9rem; }
+
+  /* Comfortable touch targets */
+  .line-chip { padding: 0.45rem 0.7rem 0.45rem 0.5rem; font-size: 0.9rem; }
+  .guess-row button, .actions button { padding: 0.65rem 0.9rem; }
+
+  /* Tighten the 4-column results table so it fits a phone */
+  th, td { padding: 0.45rem 0.3rem; }
+  th { font-size: 0.7rem; }
+  td { font-size: 0.88rem; }
+  td.dir { font-size: 1rem; }
+  #guess-table th:first-child, #guess-table td:first-child { width: 1.2rem; }
+
+  .badge { padding: 0.3rem 0.5rem; gap: 0.35rem; font-size: 0.78rem; }
+  .badge .dots { gap: 0.15rem; }
+  .line-marker { width: 1.05rem; height: 1.05rem; font-size: 0.62rem; }
+}
