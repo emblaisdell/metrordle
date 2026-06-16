@@ -11,6 +11,7 @@ const els = {
   api: document.getElementById("api"),
   system: document.getElementById("system"),
   lineFilter: document.getElementById("line-filter"),
+  lineSummary: document.getElementById("line-summary"),
   station: document.getElementById("station"),
   combobox: document.getElementById("combobox"),
   suggestions: document.getElementById("suggestions"),
@@ -135,6 +136,10 @@ async function loadStations() {
 const stationInPlay = (s) => s.lines.some((l) => selectedLines.has(l));
 
 function renderLineFilter() {
+  els.lineSummary.textContent =
+    selectedLines.size === allLines.length
+      ? "all"
+      : `${selectedLines.size} of ${allLines.length}`;
   els.lineFilter.innerHTML = allLines
     .map((l) => `
       <button type="button" class="line-chip" data-line="${l}"
@@ -268,7 +273,6 @@ async function newGame() {
     const scope = lines ? `${lines.length} line${lines.length === 1 ? "" : "s"}` : "all lines";
     setMessage(`New ${game.system_name} game (${scope}). Good luck!`, "good");
     els.station.value = "";
-    els.station.focus();
   } catch (err) {
     setMessage("Failed to start game: " + err.message, "bad");
   }

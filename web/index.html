@@ -18,8 +18,13 @@
       <label for="system">Transit system</label>
       <select id="system" class="system-select"></select>
 
-      <label>Lines in play</label>
-      <div id="line-filter" class="line-filter"></div>
+      <details id="line-details" class="line-details">
+        <summary>
+          <span>Lines in play</span>
+          <span id="line-summary" class="line-summary"></span>
+        </summary>
+        <div id="line-filter" class="line-filter"></div>
+      </details>
 
       <label for="station">Your guess</label>
       <div class="guess-row">

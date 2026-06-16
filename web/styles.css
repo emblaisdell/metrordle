@@ -64,12 +64,34 @@ input:focus { outline: 2px solid var(--accent); }
 }
 .system-select:focus { outline: 2px solid var(--accent); }
 
+/* Collapsible line filter */
+.line-details { margin-bottom: 1rem; }
+.line-details summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0.15rem 0;
+  user-select: none;
+}
+.line-details summary::-webkit-details-marker { display: none; }
+.line-details summary::before {
+  content: "▸";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.line-details[open] summary::before { transform: rotate(90deg); }
+.line-summary { color: var(--text); }
+
 /* Line filter chips */
 .line-filter {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1rem;
+  margin: 0.6rem 0 0.25rem;
 }
 .line-chip {
   display: inline-flex;
