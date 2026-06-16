@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrordle</title>
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🚇&lt;/text&gt;&lt;/svg&gt;" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>🚇 Metrordle</h1>
+      <p class="tagline">Guess the secret transit station.</p>
+    </header>
+
+    <section class="controls">
+      <label for="system">Transit system</label>
+      <select id="system" class="system-select"></select>
+
+      <details id="line-details" class="line-details">
+        <summary>
+          <span>Lines in play</span>
+          <span id="line-summary" class="line-summary"></span>
+        </summary>
+        <div id="line-filter" class="line-filter"></div>
+      </details>
+
+      <label for="station">Your guess</label>
+      <div class="guess-row">
+        <div class="combobox" id="combobox">
+          <input id="station" type="text" placeholder="Start typing a station…"
+                 autocomplete="off" role="combobox" aria-autocomplete="list"
+                 aria-expanded="false" aria-controls="suggestions" />
+          <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+        </div>
+        <button id="guess-btn">Guess</button>
+      </div>
+      <div class="actions">
+        <button id="new-btn" class="secondary">New game</button>
+      </div>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="guesses">
+      <table id="guess-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Station</th>
+            <th>Lines</th>
+            <th>Direction</th>
+          </tr>
+        </thead>
+        <tbody id="guess-body"></tbody>
+      </table>
+      <p id="empty" class="empty">No guesses yet. Make your first guess above.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
