@@ -24,6 +24,8 @@ let gameId = null;
 let gameOver = false;
 let allStations = [];     // [{ name, lines }] for the current system
 let lineColors = {};      // line name -> hex color for the current system
+let lineLabels = {};      // line name -> short letter shown in the marker
+let markerShape = "circle"; // "circle" (WMATA) | "square" (SEPTA)
 let suggestions = [];     // currently shown stations
 let activeIndex = -1;     // highlighted suggestion
 
@@ -54,9 +56,26 @@ function setGameOver(over) {
   els.station.disabled = over;
 }
 
+// Pick black or white text for legibility against a given hex background.
+function textOn(hex) {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex || "");
+  if (!m) return "#fff";
+  const n = parseInt(m[1], 16);
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  // Relative luminance (sRGB approximation).
+  const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return lum > 0.6 ? "#111" : "#fff";
+}
+
+// A line marker: colored circle/square with the line's letter inside.
 function lineDots(lines) {
   return lines
-    .map((l) => `<span class="line-dot" style="background:${lineColors[l] || "#888"}" title="${l}"></span>`)
+    .map((l) => {
+      const bg = lineColors[l] || "#888";
+      const letter = lineLabels[l] || l.charAt(0).toUpperCase();
+      return `<span class="line-marker shape-${markerShape}"
+        style="background:${bg};color:${textOn(bg)}" title="${l}">${letter}</span>`;
+    })
     .join("");
 }
 
@@ -97,6 +116,8 @@ async function loadStations() {
     const data = await api(`/stations?system=${encodeURIComponent(currentSystem())}`);
     allStations = data.stations;
     lineColors = data.colors || {};
+    lineLabels = data.labels || {};
+    markerShape = data.shape || "circle";
   } catch (err) {
     setMessage("Could not load stations: " + err.message, "bad");
   }

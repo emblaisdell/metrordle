@@ -65,7 +65,9 @@ def create_app(store: GameStore | None = None) -> Flask:
         return jsonify({
             "system": system.key,
             "system_name": system.name,
+            "shape": system.shape,
             "colors": system.colors,
+            "labels": system.labels,
             "count": len(system.stations),
             "stations": [
                 {"name": s.name, "lines": list(s.lines)} for s in system.stations

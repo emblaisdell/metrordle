@@ -1,11 +1,18 @@
 {
   "key": "philly",
   "name": "Philadelphia (SEPTA & PATCO)",
+  "shape": "square",
   "colors": {
     "Market-Frankford": "#1c6cb3",
     "Broad Street": "#f58220",
     "PATCO": "#d31245",
     "Norristown": "#6b3fa0"
+  },
+  "labels": {
+    "Market-Frankford": "L",
+    "Broad Street": "B",
+    "Norristown": "M",
+    "PATCO": "P"
   },
   "stations": [
     {

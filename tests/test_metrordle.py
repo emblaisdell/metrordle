@@ -94,10 +94,14 @@ def test_stations_per_system(client):
     assert wmata["system"] == "wmata"
     assert wmata["count"] == len(wmata["stations"]) > 0
     assert "Red" in wmata["colors"]
+    assert wmata["shape"] == "circle"
+    assert wmata["labels"]["Red"] == "R"
 
     philly = client.get("/stations?system=philly").get_json()
     assert philly["system"] == "philly"
     assert "Market-Frankford" in philly["colors"]
+    assert philly["shape"] == "square"
+    assert philly["labels"]["Market-Frankford"] == "L"
 
     assert client.get("/stations?system=bogus").status_code == 404
 

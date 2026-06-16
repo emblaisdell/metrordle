@@ -1,6 +1,7 @@
 {
   "key": "wmata",
   "name": "Washington Metro (WMATA)",
+  "shape": "circle",
   "colors": {
     "Red": "#e51937",
     "Orange": "#f7931e",
@@ -8,6 +9,14 @@
     "Blue": "#0077c0",
     "Yellow": "#ffd200",
     "Green": "#00a651"
+  },
+  "labels": {
+    "Red": "R",
+    "Orange": "O",
+    "Silver": "S",
+    "Blue": "B",
+    "Yellow": "Y",
+    "Green": "G"
   },
   "stations": [
     {

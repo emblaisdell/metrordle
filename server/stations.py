@@ -45,10 +45,13 @@ def _normalize(text: str) -> str:
 class System:
     """A transit system: its stations, line colors, and name resolution."""
 
-    def __init__(self, key: str, name: str, colors: dict[str, str], stations: list[Station]):
+    def __init__(self, key: str, name: str, colors: dict[str, str], stations: list[Station],
+                 shape: str = "circle", labels: dict[str, str] | None = None):
         self.key = key
         self.name = name
         self.colors = colors
+        self.shape = shape                 # marker shape for the UI: "circle" | "square"
+        self.labels = labels or {}         # line name -> short letter shown in the marker
         self.stations = stations
         self._lookup: dict[str, Station] = {}
         for station in stations:
@@ -82,6 +85,8 @@ def _load_system(path: Path) -> System:
         key=data["key"],
         name=data["name"],
         colors=dict(data.get("colors", {})),
+        shape=data.get("shape", "circle"),
+        labels=dict(data.get("labels", {})),
         stations=stations,
     )
 

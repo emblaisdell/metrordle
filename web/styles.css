@@ -128,14 +128,19 @@ td.dir { font-weight: 700; font-size: 1.1rem; }
 /* The match pill holds the line-color dots on the left, match text on the right. */
 .badge .dots { display: inline-flex; gap: 0.2rem; }
 
-.line-dot {
-  display: inline-block;
-  width: 0.85rem; height: 0.85rem;
-  border-radius: 50%;
-  margin-right: 0.2rem;
+.line-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem; height: 1.2rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
   vertical-align: middle;
-  border: 1px solid rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.35);
 }
+.line-marker.shape-circle { border-radius: 50%; }
+.line-marker.shape-square { border-radius: 3px; }
 
 .badge {
   display: inline-flex;
