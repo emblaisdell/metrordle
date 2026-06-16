@@ -3,23 +3,30 @@
   "name": "Philadelphia (SEPTA & PATCO)",
   "shape": "square",
   "colors": {
-    "Market-Frankford": "#1c6cb3",
-    "Broad Street": "#f58220",
-    "PATCO": "#d31245",
-    "Norristown": "#6b3fa0"
+    "Market-Frankford": "#005daa",
+    "Broad Street": "#f58025",
+    "PATCO": "#0098a6",
+    "Norristown": "#6e2c8b",
+    "Trolley": "#00a651",
+    "Girard": "#f4c300",
+    "Media-Sharon Hill": "#ec008c"
   },
   "labels": {
     "Market-Frankford": "L",
     "Broad Street": "B",
     "Norristown": "M",
-    "PATCO": "P"
+    "PATCO": "P",
+    "Trolley": "T",
+    "Girard": "G",
+    "Media-Sharon Hill": "D"
   },
   "stations": [
     {
       "name": "69th Street Transportation Center",
       "lines": [
         "Market-Frankford",
-        "Norristown"
+        "Norristown",
+        "Media-Sharon Hill"
       ],
       "lat": 39.9606,
       "lon": -75.2575,
@@ -84,7 +91,8 @@
     {
       "name": "40th Street",
       "lines": [
-        "Market-Frankford"
+        "Market-Frankford",
+        "Trolley"
       ],
       "lat": 39.9569,
       "lon": -75.2025,
@@ -102,7 +110,8 @@
     {
       "name": "30th Street",
       "lines": [
-        "Market-Frankford"
+        "Market-Frankford",
+        "Trolley"
       ],
       "lat": 39.9555,
       "lon": -75.184,
@@ -113,7 +122,8 @@
     {
       "name": "15th Street",
       "lines": [
-        "Market-Frankford"
+        "Market-Frankford",
+        "Trolley"
       ],
       "lat": 39.9526,
       "lon": -75.1652,
@@ -122,7 +132,8 @@
     {
       "name": "13th Street",
       "lines": [
-        "Market-Frankford"
+        "Market-Frankford",
+        "Trolley"
       ],
       "lat": 39.9512,
       "lon": -75.1622,
@@ -183,7 +194,8 @@
     {
       "name": "Girard (Market-Frankford)",
       "lines": [
-        "Market-Frankford"
+        "Market-Frankford",
+        "Girard"
       ],
       "lat": 39.97,
       "lon": -75.134,
@@ -381,7 +393,8 @@
     {
       "name": "Girard (Broad Street)",
       "lines": [
-        "Broad Street"
+        "Broad Street",
+        "Girard"
       ],
       "lat": 39.9706,
       "lon": -75.161,
@@ -755,6 +768,162 @@
       "aliases": [
         "Norristown"
       ]
+    },
+    {
+      "name": "19th Street",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9512,
+      "lon": -75.1715,
+      "aliases": []
+    },
+    {
+      "name": "22nd Street",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9515,
+      "lon": -75.1775,
+      "aliases": []
+    },
+    {
+      "name": "33rd Street",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9548,
+      "lon": -75.1895,
+      "aliases": []
+    },
+    {
+      "name": "36th Street",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9555,
+      "lon": -75.1955,
+      "aliases": []
+    },
+    {
+      "name": "37th Street",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9558,
+      "lon": -75.198,
+      "aliases": []
+    },
+    {
+      "name": "63rd-Malvern",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9735,
+      "lon": -75.252,
+      "aliases": [
+        "Overbrook"
+      ]
+    },
+    {
+      "name": "Darby Transportation Center",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9185,
+      "lon": -75.2585,
+      "aliases": [
+        "Darby"
+      ]
+    },
+    {
+      "name": "Yeadon",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.937,
+      "lon": -75.254,
+      "aliases": []
+    },
+    {
+      "name": "Angora",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.9428,
+      "lon": -75.2415,
+      "aliases": [
+        "61st-Baltimore"
+      ]
+    },
+    {
+      "name": "Eastwick",
+      "lines": [
+        "Trolley"
+      ],
+      "lat": 39.899,
+      "lon": -75.236,
+      "aliases": [
+        "80th-Eastwick"
+      ]
+    },
+    {
+      "name": "63rd-Girard",
+      "lines": [
+        "Girard"
+      ],
+      "lat": 39.9745,
+      "lon": -75.249,
+      "aliases": []
+    },
+    {
+      "name": "Richmond-Westmoreland",
+      "lines": [
+        "Girard"
+      ],
+      "lat": 39.987,
+      "lon": -75.0985,
+      "aliases": [
+        "Port Richmond"
+      ]
+    },
+    {
+      "name": "Springfield",
+      "lines": [
+        "Media-Sharon Hill"
+      ],
+      "lat": 39.93,
+      "lon": -75.34,
+      "aliases": []
+    },
+    {
+      "name": "Media",
+      "lines": [
+        "Media-Sharon Hill"
+      ],
+      "lat": 39.9165,
+      "lon": -75.388,
+      "aliases": [
+        "Orange Street"
+      ]
+    },
+    {
+      "name": "Collingdale",
+      "lines": [
+        "Media-Sharon Hill"
+      ],
+      "lat": 39.9145,
+      "lon": -75.278,
+      "aliases": []
+    },
+    {
+      "name": "Sharon Hill",
+      "lines": [
+        "Media-Sharon Hill"
+      ],
+      "lat": 39.902,
+      "lon": -75.267,
+      "aliases": []
     }
   ]
 }

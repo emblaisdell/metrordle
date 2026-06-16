@@ -15,8 +15,13 @@ stations and, for each guess, learn just two things:
 Each system is one JSON file in [`server/data/`](server/data/). Two ship today:
 
 - **`wmata`** — Washington Metro (the **default**), 97 stations.
-- **`philly`** — Philadelphia: SEPTA Market-Frankford & Broad Street lines,
-  the Norristown High Speed Line, and PATCO; 78 stations.
+- **`philly`** — Philadelphia, 94 stations. SEPTA Metro lines using their
+  current letters: **L** (Market-Frankford), **B** (Broad Street),
+  **M** (Norristown), **T** (subway-surface trolleys), **G** (Route 15 Girard),
+  **D** (Media/Sharon Hill) — plus **P** for PATCO.
+
+Markers in the UI are per-system: WMATA uses lettered circles (`R O S B Y G`),
+Philadelphia uses lettered squares (the SEPTA Metro letters above).
 
 Drop another `<key>.json` into `server/data/` (same shape) and it's picked up
 automatically — no code change. The UI shows a system picker; WMATA is selected
