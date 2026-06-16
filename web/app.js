@@ -177,14 +177,21 @@ function escapeHtml(s) {
   ));
 }
 
-// Bold the matched substring within a station name.
-function highlight(name, query) {
-  if (!query) return escapeHtml(name);
-  const i = name.toLowerCase().indexOf(query.toLowerCase());
-  if (i < 0) return escapeHtml(name);
-  return escapeHtml(name.slice(0, i)) +
-    `<span class="match">${escapeHtml(name.slice(i, i + query.length))}</span>` +
-    escapeHtml(name.slice(i + query.length));
+// Bold every occurrence of each search token within a station name.
+function highlight(name, tokens) {
+  if (!tokens.length) return escapeHtml(name);
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp("(" + tokens.map(escapeRe).join("|") + ")", "ig");
+  let out = "", last = 0, m;
+  while ((m = re.exec(name)) !== null) {
+    if (m.index >= last) {
+      out += escapeHtml(name.slice(last, m.index)) +
+        `<span class="match">${escapeHtml(m[0])}</span>`;
+      last = m.index + m[0].length;
+    }
+    if (m.index === re.lastIndex) re.lastIndex++;  // avoid zero-length loop
+  }
+  return out + escapeHtml(name.slice(last));
 }
 
 function closeSuggestions() {
@@ -195,15 +202,23 @@ function closeSuggestions() {
 
 function renderSuggestions(query) {
   const q = query.trim().toLowerCase();
-  // Only stations on a selected line; prefix matches first, then substring.
+  // Space-separated tokens may appear anywhere in the name, in any order.
+  const tokens = q.split(/\s+/).filter(Boolean);
+  const first = tokens[0] || "";
+  // Show every match once the query has 4+ letters; otherwise cap the list.
+  const cap = q.replace(/\s+/g, "").length >= 4 ? Infinity : 8;
+
   suggestions = allStations
-    .filter((s) => stationInPlay(s) && s.name.toLowerCase().includes(q))
+    .filter((s) => {
+      const name = s.name.toLowerCase();
+      return stationInPlay(s) && tokens.every((t) => name.includes(t));
+    })
     .sort((a, b) => {
-      const ap = a.name.toLowerCase().startsWith(q) ? 0 : 1;
-      const bp = b.name.toLowerCase().startsWith(q) ? 0 : 1;
+      const ap = a.name.toLowerCase().startsWith(first) ? 0 : 1;
+      const bp = b.name.toLowerCase().startsWith(first) ? 0 : 1;
       return ap - bp || a.name.localeCompare(b.name);
     })
-    .slice(0, 8);
+    .slice(0, cap);
   activeIndex = -1;
 
   if (suggestions.length === 0) {
@@ -213,7 +228,7 @@ function renderSuggestions(query) {
       .map((s, i) => `
         <li role="option" id="opt-${i}" aria-selected="false">
           <span class="dots">${lineDots(s.lines)}</span>
-          <span class="name">${highlight(s.name, query)}</span>
+          <span class="name">${highlight(s.name, tokens)}</span>
         </li>`)
       .join("");
   }
