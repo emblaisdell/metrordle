@@ -1,0 +1,151 @@
+:root {
+  --bg: #0f1115;
+  --panel: #1a1d24;
+  --border: #2b2f3a;
+  --text: #e6e8ee;
+  --muted: #9aa3b2;
+  --accent: #4f7cff;
+  --good: #3ec46d;
+  --warn: #e0b341;
+  --bad: #e05f5f;
+
+  /* WMATA line colors */
+  --Red: #e51937;
+  --Orange: #f7931e;
+  --Silver: #a2a4a1;
+  --Blue: #0077c0;
+  --Yellow: #ffd200;
+  --Green: #00a651;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+main { width: 100%; max-width: 720px; }
+
+header { text-align: center; margin-bottom: 1.5rem; }
+h1 { margin: 0; font-size: 2.2rem; }
+.tagline { color: var(--muted); margin: 0.25rem 0 0; }
+
+.controls, .guesses, footer {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; }
+
+.guess-row { display: flex; gap: 0.5rem; }
+input {
+  width: 100%;
+  background: #0c0e12;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+input:focus { outline: 2px solid var(--accent); }
+
+/* Custom autocomplete combobox */
+.combobox { position: relative; flex: 1; }
+
+.suggestions {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  max-height: 280px;
+  overflow-y: auto;
+  background: #0c0e12;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+.suggestions[hidden] { display: none; }
+
+.suggestions li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.suggestions li .name { flex: 1; }
+.suggestions li .dots { display: inline-flex; gap: 0.15rem; }
+.suggestions li[aria-selected="true"],
+.suggestions li:hover { background: rgba(79, 124, 255, 0.18); }
+.suggestions li .match { color: var(--accent); font-weight: 700; }
+.suggestions .no-results { color: var(--muted); cursor: default; }
+.suggestions .no-results:hover { background: transparent; }
+
+button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+
+.actions { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.message { min-height: 1.2rem; margin: 0.75rem 0 0; font-weight: 600; }
+.message.good { color: var(--good); }
+.message.bad { color: var(--bad); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-size: 0.8rem; font-weight: 600; }
+td.dir { font-weight: 700; font-size: 1.1rem; }
+
+/* The match pill holds the line-color dots on the left, match text on the right. */
+.badge .dots { display: inline-flex; gap: 0.2rem; }
+
+.line-dot {
+  display: inline-block;
+  width: 0.85rem; height: 0.85rem;
+  border-radius: 50%;
+  margin-right: 0.2rem;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.badge.all { background: rgba(62,196,109,0.18); color: var(--good); }
+.badge.some { background: rgba(224,179,65,0.18); color: var(--warn); }
+.badge.none { background: rgba(224,95,95,0.18); color: var(--bad); }
+
+tr.correct td { background: rgba(62,196,109,0.12); }
+
+.empty { color: var(--muted); text-align: center; margin: 0.5rem 0; }
+footer input { font-size: 0.85rem; }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metrordle</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>🚇 Metrordle</h1>
+      <p class="tagline">Guess the secret WMATA Metro station.</p>
+    </header>
+
+    <section class="controls">
+      <label for="station">Your guess</label>
+      <div class="guess-row">
+        <div class="combobox" id="combobox">
+          <input id="station" type="text" placeholder="Start typing a station…"
+                 autocomplete="off" role="combobox" aria-autocomplete="list"
+                 aria-expanded="false" aria-controls="suggestions" />
+          <ul id="suggestions" class="suggestions" role="listbox" hidden></ul>
+        </div>
+        <button id="guess-btn">Guess</button>
+      </div>
+      <div class="actions">
+        <button id="new-btn" class="secondary">New game</button>
+      </div>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="guesses">
+      <table id="guess-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Station</th>
+            <th>Lines</th>
+            <th>Direction</th>
+          </tr>
+        </thead>
+        <tbody id="guess-body"></tbody>
+      </table>
+      <p id="empty" class="empty">No guesses yet. Make your first guess above.</p>
+    </section>
+
+    <footer>
+      <label for="api">API base</label>
+      <input id="api" value="http://127.0.0.1:5000" />
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
