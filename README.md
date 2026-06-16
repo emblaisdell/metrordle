@@ -14,14 +14,23 @@ stations and, for each guess, learn just two things:
 
 Each system is one JSON file in [`server/data/`](server/data/). Two ship today:
 
-- **`wmata`** — Washington Metro (the **default**), 97 stations.
-- **`philly`** — Philadelphia, 94 stations. SEPTA Metro lines using their
-  current letters: **L** (Market-Frankford), **B** (Broad Street),
-  **M** (Norristown), **T** (subway-surface trolleys), **G** (Route 15 Girard),
-  **D** (Media/Sharon Hill) — plus **P** for PATCO.
+- **`wmata`** — Washington Metro (the **default**), 98 stations, with exact
+  names/coordinates from the regional **MWCOG** GIS feed (includes Potomac Yard).
+- **`philly`** — Philadelphia, 422 stations, generated from the official
+  **SEPTA** and **PATCO** GTFS feeds (exact names, coordinates, and colors).
+  SEPTA Metro lines use their current letters: **L** (Market-Frankford),
+  **B** (Broad Street), **M** (Norristown), **T** (subway-surface trolleys),
+  **G** (Route 15 Girard), **D** (Media/Sharon Hill) — plus **P** for PATCO.
 
 Markers in the UI are per-system: WMATA uses lettered circles (`R O S B Y G`),
 Philadelphia uses lettered squares (the SEPTA Metro letters above).
+
+### Line filter
+
+Because Philadelphia includes every trolley street stop, the UI shows a **line
+filter** — toggle chips (one per line) to choose which lines are in play. The
+secret answer and your guesses are then restricted to stations on the selected
+lines. `POST /games` takes an optional `{"lines": [...]}` to scope a game.
 
 Drop another `<key>.json` into `server/data/` (same shape) and it's picked up
 automatically — no code change. The UI shows a system picker; WMATA is selected
@@ -128,7 +137,12 @@ tests/test_metrordle.py
 ### Data
 
 Each `server/data/<key>.json` describes one system: its `key`, display `name`,
-a `colors` map (line name → hex, used by the UI), and a list of `stations`
-(`name`, `lines`, `lat`, `lon`, optional `aliases`). Coordinates only need to
-be accurate enough to resolve relative compass directions between stations in
-the same system; the Philadelphia coordinates in particular are approximate.
+marker `shape`, `colors` and `labels` maps (line name → hex / letter), and a
+list of `stations` (`name`, `lines`, `lat`, `lon`, optional `aliases`).
+
+Both datasets are derived from authoritative sources with exact coordinates and
+official line colors:
+- **WMATA** — MWCOG regional GIS (`RTDC/MetroRail`) station layer.
+- **Philadelphia** — SEPTA & PATCO official GTFS feeds. Trolley stops are
+  deduplicated by name (the two directions are averaged), and genuinely distinct
+  same-named stops are split and disambiguated.

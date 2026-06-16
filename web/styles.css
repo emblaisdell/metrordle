@@ -64,6 +64,29 @@ input:focus { outline: 2px solid var(--accent); }
 }
 .system-select:focus { outline: 2px solid var(--accent); }
 
+/* Line filter chips */
+.line-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.line-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem 0.3rem 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #0c0e12;
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+.line-chip[aria-pressed="false"] { opacity: 0.4; }
+.line-chip:hover { border-color: var(--accent); }
+
 /* Custom autocomplete combobox */
 .combobox { position: relative; flex: 1; }
 

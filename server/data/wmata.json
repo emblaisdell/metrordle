@@ -20,101 +20,23 @@
   },
   "stations": [
     {
-      "name": "Shady Grove",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.1199,
-      "lon": -77.1646,
-      "aliases": []
-    },
-    {
-      "name": "Rockville",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.084,
-      "lon": -77.1464,
-      "aliases": []
-    },
-    {
-      "name": "Twinbrook",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.0625,
-      "lon": -77.1213,
-      "aliases": []
-    },
-    {
-      "name": "North Bethesda",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.048,
-      "lon": -77.1129,
-      "aliases": [
-        "White Flint"
-      ]
-    },
-    {
-      "name": "Grosvenor-Strathmore",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.0294,
-      "lon": -77.1042,
-      "aliases": [
-        "Grosvenor"
-      ]
-    },
-    {
-      "name": "Medical Center",
-      "lines": [
-        "Red"
-      ],
-      "lat": 39.0001,
-      "lon": -77.0972,
-      "aliases": []
-    },
-    {
       "name": "Bethesda",
       "lines": [
         "Red"
       ],
-      "lat": 38.9844,
-      "lon": -77.0944,
+      "lat": 38.984401,
+      "lon": -77.094132,
       "aliases": []
     },
     {
-      "name": "Friendship Heights",
+      "name": "Brookland-CUA",
       "lines": [
         "Red"
       ],
-      "lat": 38.9601,
-      "lon": -77.0853,
-      "aliases": []
-    },
-    {
-      "name": "Tenleytown-AU",
-      "lines": [
-        "Red"
-      ],
-      "lat": 38.9479,
-      "lon": -77.0793,
+      "lat": 38.933219,
+      "lon": -76.994537,
       "aliases": [
-        "Tenleytown"
-      ]
-    },
-    {
-      "name": "Van Ness-UDC",
-      "lines": [
-        "Red"
-      ],
-      "lat": 38.9438,
-      "lon": -77.0634,
-      "aliases": [
-        "Van Ness"
+        "Brookland"
       ]
     },
     {
@@ -122,28 +44,17 @@
       "lines": [
         "Red"
       ],
-      "lat": 38.9349,
-      "lon": -77.0581,
+      "lat": 38.934771,
+      "lon": -77.058045,
       "aliases": []
-    },
-    {
-      "name": "Woodley Park",
-      "lines": [
-        "Red"
-      ],
-      "lat": 38.925,
-      "lon": -77.0526,
-      "aliases": [
-        "Woodley Park-Zoo"
-      ]
     },
     {
       "name": "Dupont Circle",
       "lines": [
         "Red"
       ],
-      "lat": 38.9097,
-      "lon": -77.0434,
+      "lat": 38.909606,
+      "lon": -77.043417,
       "aliases": []
     },
     {
@@ -151,8 +62,90 @@
       "lines": [
         "Red"
       ],
-      "lat": 38.9032,
-      "lon": -77.0397,
+      "lat": 38.90321,
+      "lon": -77.039703,
+      "aliases": []
+    },
+    {
+      "name": "Forest Glen",
+      "lines": [
+        "Red"
+      ],
+      "lat": 39.014962,
+      "lon": -77.042919,
+      "aliases": []
+    },
+    {
+      "name": "Fort Totten",
+      "lines": [
+        "Red",
+        "Green"
+      ],
+      "lat": 38.951855,
+      "lon": -77.002205,
+      "aliases": []
+    },
+    {
+      "name": "Friendship Heights",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.959492,
+      "lon": -77.084998,
+      "aliases": []
+    },
+    {
+      "name": "Gallery Place",
+      "lines": [
+        "Red",
+        "Yellow",
+        "Green"
+      ],
+      "lat": 38.898325,
+      "lon": -77.021918,
+      "aliases": [
+        "Chinatown",
+        "Gallery Place-Chinatown"
+      ]
+    },
+    {
+      "name": "Glenmont",
+      "lines": [
+        "Red"
+      ],
+      "lat": 39.061792,
+      "lon": -77.05356,
+      "aliases": []
+    },
+    {
+      "name": "Grosvenor-Strathmore",
+      "lines": [
+        "Red"
+      ],
+      "lat": 39.029277,
+      "lon": -77.103852,
+      "aliases": [
+        "Grosvenor"
+      ]
+    },
+    {
+      "name": "Judiciary Sq",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.896098,
+      "lon": -77.016641,
+      "aliases": [
+        "Judiciary Square"
+      ]
+    },
+    {
+      "name": "Medical Center",
+      "lines": [
+        "Red"
+      ],
+      "lat": 39.000064,
+      "lon": -77.096955,
       "aliases": []
     },
     {
@@ -163,40 +156,8 @@
         "Silver",
         "Blue"
       ],
-      "lat": 38.8983,
-      "lon": -77.0281,
-      "aliases": []
-    },
-    {
-      "name": "Gallery Place",
-      "lines": [
-        "Red",
-        "Green",
-        "Yellow"
-      ],
-      "lat": 38.8983,
-      "lon": -77.0219,
-      "aliases": [
-        "Gallery Place-Chinatown",
-        "Chinatown"
-      ]
-    },
-    {
-      "name": "Judiciary Square",
-      "lines": [
-        "Red"
-      ],
-      "lat": 38.8961,
-      "lon": -77.0166,
-      "aliases": []
-    },
-    {
-      "name": "Union Station",
-      "lines": [
-        "Red"
-      ],
-      "lat": 38.8975,
-      "lon": -77.0074,
+      "lat": 38.898322,
+      "lon": -77.02808,
       "aliases": []
     },
     {
@@ -204,52 +165,51 @@
       "lines": [
         "Red"
       ],
-      "lat": 38.907,
-      "lon": -77.003,
+      "lat": 38.907024,
+      "lon": -77.003023,
       "aliases": [
         "NoMa",
         "NoMa-Gallaudet"
       ]
     },
     {
-      "name": "Rhode Island Ave",
+      "name": "North Bethesda",
       "lines": [
         "Red"
       ],
-      "lat": 38.9209,
-      "lon": -76.9959,
+      "lat": 39.048159,
+      "lon": -77.112832,
+      "aliases": [
+        "White Flint"
+      ]
+    },
+    {
+      "name": "Rhode Island Av",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.921067,
+      "lon": -76.995939,
       "aliases": [
         "Rhode Island Avenue"
       ]
     },
     {
-      "name": "Brookland-CUA",
+      "name": "Rockville",
       "lines": [
         "Red"
       ],
-      "lat": 38.9333,
-      "lon": -76.9947,
-      "aliases": [
-        "Brookland"
-      ]
-    },
-    {
-      "name": "Fort Totten",
-      "lines": [
-        "Red",
-        "Green"
-      ],
-      "lat": 38.9518,
-      "lon": -77.0021,
+      "lat": 39.084329,
+      "lon": -77.146128,
       "aliases": []
     },
     {
-      "name": "Takoma",
+      "name": "Shady Grove",
       "lines": [
         "Red"
       ],
-      "lat": 38.9752,
-      "lon": -77.0177,
+      "lat": 39.119935,
+      "lon": -77.16463,
       "aliases": []
     },
     {
@@ -257,76 +217,75 @@
       "lines": [
         "Red"
       ],
-      "lat": 38.9937,
-      "lon": -77.0312,
+      "lat": 38.993957,
+      "lon": -77.03102,
       "aliases": []
     },
     {
-      "name": "Forest Glen",
+      "name": "Takoma",
       "lines": [
         "Red"
       ],
-      "lat": 39.0151,
-      "lon": -77.0428,
+      "lat": 38.976086,
+      "lon": -77.018179,
       "aliases": []
+    },
+    {
+      "name": "Tenleytown-AU",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.948859,
+      "lon": -77.07959,
+      "aliases": [
+        "Tenleytown"
+      ]
+    },
+    {
+      "name": "Twinbrook",
+      "lines": [
+        "Red"
+      ],
+      "lat": 39.062475,
+      "lon": -77.12082,
+      "aliases": []
+    },
+    {
+      "name": "Union Station",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.897774,
+      "lon": -77.007417,
+      "aliases": []
+    },
+    {
+      "name": "Van Ness-UDC",
+      "lines": [
+        "Red"
+      ],
+      "lat": 38.943273,
+      "lon": -77.062988,
+      "aliases": [
+        "Van Ness"
+      ]
     },
     {
       "name": "Wheaton",
       "lines": [
         "Red"
       ],
-      "lat": 39.0381,
-      "lon": -77.0512,
+      "lat": 39.037535,
+      "lon": -77.050109,
       "aliases": []
     },
     {
-      "name": "Glenmont",
+      "name": "Woodley Park",
       "lines": [
         "Red"
       ],
-      "lat": 39.0613,
-      "lon": -77.0531,
-      "aliases": []
-    },
-    {
-      "name": "Vienna",
-      "lines": [
-        "Orange"
-      ],
-      "lat": 38.8776,
-      "lon": -77.2713,
-      "aliases": [
-        "Vienna/Fairfax-GMU"
-      ]
-    },
-    {
-      "name": "Dunn Loring",
-      "lines": [
-        "Orange"
-      ],
-      "lat": 38.8832,
-      "lon": -77.2287,
-      "aliases": [
-        "Dunn Loring-Merrifield"
-      ]
-    },
-    {
-      "name": "West Falls Church",
-      "lines": [
-        "Orange"
-      ],
-      "lat": 38.9008,
-      "lon": -77.1894,
-      "aliases": []
-    },
-    {
-      "name": "East Falls Church",
-      "lines": [
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.8859,
-      "lon": -77.1571,
+      "lat": 38.925093,
+      "lon": -77.05242,
       "aliases": []
     },
     {
@@ -335,23 +294,31 @@
         "Orange",
         "Silver"
       ],
-      "lat": 38.8821,
-      "lon": -77.1115,
+      "lat": 38.882191,
+      "lon": -77.113171,
       "aliases": [
         "Ballston"
       ]
     },
     {
-      "name": "Virginia Square-GMU",
+      "name": "Capitol South",
       "lines": [
         "Orange",
-        "Silver"
+        "Silver",
+        "Blue"
       ],
-      "lat": 38.8835,
-      "lon": -77.1037,
-      "aliases": [
-        "Virginia Square"
-      ]
+      "lat": 38.88507,
+      "lon": -77.005142,
+      "aliases": []
+    },
+    {
+      "name": "Cheverly",
+      "lines": [
+        "Orange"
+      ],
+      "lat": 38.91664,
+      "lon": -76.91663,
+      "aliases": []
     },
     {
       "name": "Clarendon",
@@ -359,8 +326,8 @@
         "Orange",
         "Silver"
       ],
-      "lat": 38.8867,
-      "lon": -77.095,
+      "lat": 38.886713,
+      "lon": -77.095396,
       "aliases": []
     },
     {
@@ -369,77 +336,284 @@
         "Orange",
         "Silver"
       ],
-      "lat": 38.8911,
-      "lon": -77.0843,
-      "aliases": [
-        "Courthouse"
-      ]
-    },
-    {
-      "name": "Minnesota Ave",
-      "lines": [
-        "Orange"
-      ],
-      "lat": 38.8987,
-      "lon": -76.9477,
-      "aliases": [
-        "Minnesota Avenue"
-      ]
+      "lat": 38.890183,
+      "lon": -77.087134,
+      "aliases": []
     },
     {
       "name": "Deanwood",
       "lines": [
         "Orange"
       ],
-      "lat": 38.9075,
-      "lon": -76.9357,
+      "lat": 38.908186,
+      "lon": -76.935259,
       "aliases": []
     },
     {
-      "name": "Cheverly",
+      "name": "Dunn Loring",
       "lines": [
         "Orange"
       ],
-      "lat": 38.9162,
-      "lon": -76.9152,
+      "lat": 38.883633,
+      "lon": -77.227163,
       "aliases": []
+    },
+    {
+      "name": "East Falls Church",
+      "lines": [
+        "Orange",
+        "Silver"
+      ],
+      "lat": 38.885961,
+      "lon": -77.156885,
+      "aliases": []
+    },
+    {
+      "name": "Eastern Market",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.88463,
+      "lon": -76.996003,
+      "aliases": []
+    },
+    {
+      "name": "Farragut West",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.901321,
+      "lon": -77.040698,
+      "aliases": []
+    },
+    {
+      "name": "Federal Center SW",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.88508,
+      "lon": -77.015871,
+      "aliases": []
+    },
+    {
+      "name": "Federal Triangle",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.893189,
+      "lon": -77.028134,
+      "aliases": []
+    },
+    {
+      "name": "Foggy Bottom-GWU",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.900706,
+      "lon": -77.05028,
+      "aliases": [
+        "Foggy Bottom"
+      ]
+    },
+    {
+      "name": "L'Enfant Plaza",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue",
+        "Yellow",
+        "Green"
+      ],
+      "lat": 38.884846,
+      "lon": -77.021911,
+      "aliases": [
+        "Lenfant",
+        "LEnfant Plaza"
+      ]
     },
     {
       "name": "Landover",
       "lines": [
         "Orange"
       ],
-      "lat": 38.9342,
-      "lon": -76.8908,
+      "lat": 38.933514,
+      "lon": -76.8912,
       "aliases": []
+    },
+    {
+      "name": "McPherson Sq",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.901341,
+      "lon": -77.033636,
+      "aliases": [
+        "McPherson Square"
+      ]
+    },
+    {
+      "name": "Minnesota Av",
+      "lines": [
+        "Orange"
+      ],
+      "lat": 38.899199,
+      "lon": -76.94675,
+      "aliases": [
+        "Minnesota Avenue"
+      ]
     },
     {
       "name": "New Carrollton",
       "lines": [
         "Orange"
       ],
-      "lat": 38.9479,
-      "lon": -76.8722,
+      "lat": 38.947793,
+      "lon": -76.871844,
       "aliases": []
     },
     {
-      "name": "McLean",
+      "name": "Potomac Av",
       "lines": [
-        "Silver"
+        "Orange",
+        "Silver",
+        "Blue"
       ],
-      "lat": 38.9244,
-      "lon": -77.2102,
-      "aliases": []
-    },
-    {
-      "name": "Tysons",
-      "lines": [
-        "Silver"
-      ],
-      "lat": 38.9201,
-      "lon": -77.2229,
+      "lat": 38.881271,
+      "lon": -76.985498,
       "aliases": [
-        "Tysons Corner"
+        "Potomac Avenue"
+      ]
+    },
+    {
+      "name": "Rosslyn",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.895987,
+      "lon": -77.070911,
+      "aliases": []
+    },
+    {
+      "name": "Smithsonian",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.888026,
+      "lon": -77.028069,
+      "aliases": []
+    },
+    {
+      "name": "Stadium-Armory",
+      "lines": [
+        "Orange",
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.886717,
+      "lon": -76.977091,
+      "aliases": []
+    },
+    {
+      "name": "Vienna",
+      "lines": [
+        "Orange"
+      ],
+      "lat": 38.877609,
+      "lon": -77.272625,
+      "aliases": []
+    },
+    {
+      "name": "Virginia Sq-GMU",
+      "lines": [
+        "Orange",
+        "Silver"
+      ],
+      "lat": 38.883374,
+      "lon": -77.10298,
+      "aliases": [
+        "Virginia Square"
+      ]
+    },
+    {
+      "name": "West Falls Church",
+      "lines": [
+        "Orange"
+      ],
+      "lat": 38.900788,
+      "lon": -77.189097,
+      "aliases": []
+    },
+    {
+      "name": "Addison Rd",
+      "lines": [
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.886756,
+      "lon": -76.89411,
+      "aliases": [
+        "Addison Road",
+        "Addison Road-Seat Pleasant"
+      ]
+    },
+    {
+      "name": "Ashburn",
+      "lines": [
+        "Silver"
+      ],
+      "lat": 39.005978,
+      "lon": -77.492277,
+      "aliases": []
+    },
+    {
+      "name": "Benning Rd",
+      "lines": [
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.890983,
+      "lon": -76.938367,
+      "aliases": [
+        "Benning Road"
+      ]
+    },
+    {
+      "name": "Capitol Heights",
+      "lines": [
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.889474,
+      "lon": -76.91181,
+      "aliases": []
+    },
+    {
+      "name": "Downtown Largo",
+      "lines": [
+        "Silver",
+        "Blue"
+      ],
+      "lat": 38.900608,
+      "lon": -76.844554,
+      "aliases": [
+        "Largo",
+        "Largo Town Center"
       ]
     },
     {
@@ -447,37 +621,8 @@
       "lines": [
         "Silver"
       ],
-      "lat": 38.9214,
-      "lon": -77.235,
-      "aliases": []
-    },
-    {
-      "name": "Spring Hill",
-      "lines": [
-        "Silver"
-      ],
-      "lat": 38.9292,
-      "lon": -77.2419,
-      "aliases": []
-    },
-    {
-      "name": "Wiehle-Reston East",
-      "lines": [
-        "Silver"
-      ],
-      "lat": 38.9479,
-      "lon": -77.3402,
-      "aliases": [
-        "Wiehle"
-      ]
-    },
-    {
-      "name": "Reston Town Center",
-      "lines": [
-        "Silver"
-      ],
-      "lat": 38.9525,
-      "lon": -77.3585,
+      "lat": 38.920963,
+      "lon": -77.23388,
       "aliases": []
     },
     {
@@ -485,8 +630,8 @@
       "lines": [
         "Silver"
       ],
-      "lat": 38.9596,
-      "lon": -77.3859,
+      "lat": 38.952514,
+      "lon": -77.381784,
       "aliases": []
     },
     {
@@ -494,238 +639,91 @@
       "lines": [
         "Silver"
       ],
-      "lat": 38.9536,
-      "lon": -77.4202,
+      "lat": 38.959601,
+      "lon": -77.414552,
       "aliases": []
-    },
-    {
-      "name": "Washington Dulles International Airport",
-      "lines": [
-        "Silver"
-      ],
-      "lat": 38.9531,
-      "lon": -77.4565,
-      "aliases": [
-        "Dulles",
-        "Dulles Airport"
-      ]
     },
     {
       "name": "Loudoun Gateway",
       "lines": [
         "Silver"
       ],
-      "lat": 38.9905,
-      "lon": -77.4637,
+      "lat": 38.990607,
+      "lon": -77.460731,
       "aliases": []
     },
     {
-      "name": "Ashburn",
+      "name": "McLean",
       "lines": [
         "Silver"
       ],
-      "lat": 39.0048,
-      "lon": -77.4901,
+      "lat": 38.92453,
+      "lon": -77.210081,
       "aliases": []
     },
     {
-      "name": "Rosslyn",
+      "name": "Morgan Blvd",
       "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.8966,
-      "lon": -77.0719,
-      "aliases": []
-    },
-    {
-      "name": "Foggy Bottom-GWU",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.9008,
-      "lon": -77.0501,
-      "aliases": [
-        "Foggy Bottom"
-      ]
-    },
-    {
-      "name": "Farragut West",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.9013,
-      "lon": -77.0414,
-      "aliases": []
-    },
-    {
-      "name": "McPherson Square",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.9013,
-      "lon": -77.0337,
-      "aliases": []
-    },
-    {
-      "name": "Federal Triangle",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.8937,
-      "lon": -77.0281,
-      "aliases": []
-    },
-    {
-      "name": "Smithsonian",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.8879,
-      "lon": -77.0281,
-      "aliases": []
-    },
-    {
-      "name": "L'Enfant Plaza",
-      "lines": [
-        "Blue",
-        "Orange",
         "Silver",
-        "Green",
-        "Yellow"
+        "Blue"
       ],
-      "lat": 38.8847,
-      "lon": -77.0219,
+      "lat": 38.893843,
+      "lon": -76.868077,
       "aliases": [
-        "LEnfant Plaza",
-        "Lenfant"
+        "Morgan Boulevard"
       ]
     },
     {
-      "name": "Federal Center SW",
+      "name": "Reston Town Center",
       "lines": [
-        "Blue",
-        "Orange",
         "Silver"
       ],
-      "lat": 38.8848,
-      "lon": -77.0157,
+      "lat": 38.953004,
+      "lon": -77.360565,
       "aliases": []
     },
     {
-      "name": "Capitol South",
+      "name": "Spring Hill",
       "lines": [
-        "Blue",
-        "Orange",
         "Silver"
       ],
-      "lat": 38.8858,
-      "lon": -77.0058,
+      "lat": 38.92896,
+      "lon": -77.24156,
       "aliases": []
     },
     {
-      "name": "Eastern Market",
+      "name": "Tysons",
       "lines": [
-        "Blue",
-        "Orange",
         "Silver"
       ],
-      "lat": 38.8842,
-      "lon": -76.9956,
-      "aliases": []
-    },
-    {
-      "name": "Potomac Ave",
-      "lines": [
-        "Blue",
-        "Orange",
-        "Silver"
-      ],
-      "lat": 38.8817,
-      "lon": -76.9856,
+      "lat": 38.920682,
+      "lon": -77.221718,
       "aliases": [
-        "Potomac Avenue"
+        "Tysons Corner"
       ]
     },
     {
-      "name": "Stadium-Armory",
+      "name": "Washington Dulles International Airport",
       "lines": [
-        "Blue",
-        "Orange",
         "Silver"
       ],
-      "lat": 38.8799,
-      "lon": -76.9774,
+      "lat": 38.956545,
+      "lon": -77.44458,
       "aliases": [
-        "Stadium Armory"
+        "Dulles",
+        "Dulles Airport",
+        "IAD"
       ]
     },
     {
-      "name": "Benning Road",
+      "name": "Wiehle-Reston East",
       "lines": [
-        "Blue",
         "Silver"
       ],
-      "lat": 38.8907,
-      "lon": -76.9382,
-      "aliases": []
-    },
-    {
-      "name": "Capitol Heights",
-      "lines": [
-        "Blue",
-        "Silver"
-      ],
-      "lat": 38.8893,
-      "lon": -76.9131,
-      "aliases": []
-    },
-    {
-      "name": "Addison Road",
-      "lines": [
-        "Blue",
-        "Silver"
-      ],
-      "lat": 38.8864,
-      "lon": -76.8939,
+      "lat": 38.947741,
+      "lon": -77.340062,
       "aliases": [
-        "Addison Road-Seat Pleasant"
-      ]
-    },
-    {
-      "name": "Morgan Boulevard",
-      "lines": [
-        "Blue",
-        "Silver"
-      ],
-      "lat": 38.898,
-      "lon": -76.8682,
-      "aliases": [
-        "Morgan Blvd"
-      ]
-    },
-    {
-      "name": "Downtown Largo",
-      "lines": [
-        "Blue",
-        "Silver"
-      ],
-      "lat": 38.9013,
-      "lon": -76.8449,
-      "aliases": [
-        "Largo",
-        "Largo Town Center"
+        "Wiehle"
       ]
     },
     {
@@ -733,9 +731,55 @@
       "lines": [
         "Blue"
       ],
-      "lat": 38.8847,
-      "lon": -77.0631,
+      "lat": 38.884695,
+      "lon": -77.062812,
       "aliases": []
+    },
+    {
+      "name": "Braddock Rd",
+      "lines": [
+        "Blue",
+        "Yellow"
+      ],
+      "lat": 38.814151,
+      "lon": -77.05367,
+      "aliases": [
+        "Braddock Road"
+      ]
+    },
+    {
+      "name": "Crystal City",
+      "lines": [
+        "Blue",
+        "Yellow"
+      ],
+      "lat": 38.857912,
+      "lon": -77.050292,
+      "aliases": []
+    },
+    {
+      "name": "Franconia-Springfield",
+      "lines": [
+        "Blue"
+      ],
+      "lat": 38.76653,
+      "lon": -77.167973,
+      "aliases": [
+        "Franconia",
+        "Springfield"
+      ]
+    },
+    {
+      "name": "King St-Old Town",
+      "lines": [
+        "Blue",
+        "Yellow"
+      ],
+      "lat": 38.806594,
+      "lon": -77.060814,
+      "aliases": [
+        "King Street"
+      ]
     },
     {
       "name": "Pentagon",
@@ -743,8 +787,8 @@
         "Blue",
         "Yellow"
       ],
-      "lat": 38.8694,
-      "lon": -77.0537,
+      "lat": 38.86947,
+      "lon": -77.053718,
       "aliases": []
     },
     {
@@ -753,18 +797,18 @@
         "Blue",
         "Yellow"
       ],
-      "lat": 38.8625,
-      "lon": -77.0594,
+      "lat": 38.86189,
+      "lon": -77.059541,
       "aliases": []
     },
     {
-      "name": "Crystal City",
+      "name": "Potomac Yard",
       "lines": [
         "Blue",
         "Yellow"
       ],
-      "lat": 38.8576,
-      "lon": -77.0509,
+      "lat": 38.834006,
+      "lon": -77.046404,
       "aliases": []
     },
     {
@@ -773,69 +817,44 @@
         "Blue",
         "Yellow"
       ],
-      "lat": 38.8631,
-      "lon": -77.0497,
+      "lat": 38.853424,
+      "lon": -77.044045,
       "aliases": [
-        "National Airport",
         "Reagan National",
+        "National Airport",
         "DCA"
       ]
     },
     {
-      "name": "Braddock Road",
+      "name": "Van Dorn St",
       "lines": [
-        "Blue",
-        "Yellow"
+        "Blue"
       ],
-      "lat": 38.8141,
-      "lon": -77.0537,
+      "lat": 38.799315,
+      "lon": -77.129114,
+      "aliases": [
+        "Van Dorn Street"
+      ]
+    },
+    {
+      "name": "Archives",
+      "lines": [
+        "Yellow",
+        "Green"
+      ],
+      "lat": 38.893673,
+      "lon": -77.021917,
       "aliases": []
     },
     {
-      "name": "King St-Old Town",
-      "lines": [
-        "Blue",
-        "Yellow"
-      ],
-      "lat": 38.8061,
-      "lon": -77.0606,
-      "aliases": [
-        "King Street",
-        "King St"
-      ]
-    },
-    {
-      "name": "Van Dorn Street",
-      "lines": [
-        "Blue"
-      ],
-      "lat": 38.7991,
-      "lon": -77.1294,
-      "aliases": [
-        "Van Dorn"
-      ]
-    },
-    {
-      "name": "Franconia-Springfield",
-      "lines": [
-        "Blue"
-      ],
-      "lat": 38.7665,
-      "lon": -77.1685,
-      "aliases": [
-        "Franconia",
-        "Springfield"
-      ]
-    },
-    {
-      "name": "Eisenhower Avenue",
+      "name": "Eisenhower Av",
       "lines": [
         "Yellow"
       ],
-      "lat": 38.8001,
-      "lon": -77.0648,
+      "lat": 38.800433,
+      "lon": -77.070877,
       "aliases": [
-        "Eisenhower Ave"
+        "Eisenhower Avenue"
       ]
     },
     {
@@ -843,143 +862,22 @@
       "lines": [
         "Yellow"
       ],
-      "lat": 38.7935,
-      "lon": -77.0753,
+      "lat": 38.793924,
+      "lon": -77.075208,
       "aliases": []
-    },
-    {
-      "name": "Archives",
-      "lines": [
-        "Green",
-        "Yellow"
-      ],
-      "lat": 38.8937,
-      "lon": -77.0219,
-      "aliases": [
-        "Archives-Navy Memorial-Penn Quarter"
-      ]
     },
     {
       "name": "Mt Vernon Sq",
       "lines": [
-        "Green",
-        "Yellow"
+        "Yellow",
+        "Green"
       ],
-      "lat": 38.9056,
-      "lon": -77.0222,
+      "lat": 38.906445,
+      "lon": -77.021917,
       "aliases": [
         "Mount Vernon Square",
-        "Mt Vernon Square",
+        "Mount Vernon Square",
         "Convention Center"
-      ]
-    },
-    {
-      "name": "Shaw-Howard U",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9128,
-      "lon": -77.022,
-      "aliases": [
-        "Shaw-Howard",
-        "Shaw"
-      ]
-    },
-    {
-      "name": "U Street",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.917,
-      "lon": -77.0281,
-      "aliases": [
-        "U Street/African-Amer Civil War Memorial/Cardozo",
-        "U St"
-      ]
-    },
-    {
-      "name": "Columbia Heights",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9286,
-      "lon": -77.0325,
-      "aliases": []
-    },
-    {
-      "name": "Georgia Ave-Petworth",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9362,
-      "lon": -77.0246,
-      "aliases": [
-        "Georgia Avenue-Petworth",
-        "Petworth"
-      ]
-    },
-    {
-      "name": "West Hyattsville",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9544,
-      "lon": -76.9696,
-      "aliases": []
-    },
-    {
-      "name": "Hyattsville Crossing",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9655,
-      "lon": -76.9564,
-      "aliases": [
-        "Prince George's Plaza",
-        "Prince Georges Plaza"
-      ]
-    },
-    {
-      "name": "College Park-U of Md",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.9785,
-      "lon": -76.9275,
-      "aliases": [
-        "College Park"
-      ]
-    },
-    {
-      "name": "Greenbelt",
-      "lines": [
-        "Green"
-      ],
-      "lat": 39.0114,
-      "lon": -76.9114,
-      "aliases": []
-    },
-    {
-      "name": "Waterfront",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.8765,
-      "lon": -77.0173,
-      "aliases": [
-        "Waterfront-SEU"
-      ]
-    },
-    {
-      "name": "Navy Yard-Ballpark",
-      "lines": [
-        "Green"
-      ],
-      "lat": 38.8765,
-      "lon": -77.005,
-      "aliases": [
-        "Navy Yard",
-        "Ballpark"
       ]
     },
     {
@@ -987,8 +885,39 @@
       "lines": [
         "Green"
       ],
-      "lat": 38.8629,
-      "lon": -76.9956,
+      "lat": 38.862971,
+      "lon": -76.995373,
+      "aliases": []
+    },
+    {
+      "name": "Branch Av",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.826454,
+      "lon": -76.911466,
+      "aliases": [
+        "Branch Avenue"
+      ]
+    },
+    {
+      "name": "College Park-U of Md",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.978641,
+      "lon": -76.928127,
+      "aliases": [
+        "College Park"
+      ]
+    },
+    {
+      "name": "Columbia Heights",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.927846,
+      "lon": -77.032554,
       "aliases": []
     },
     {
@@ -996,49 +925,123 @@
       "lines": [
         "Green"
       ],
-      "lat": 38.8453,
-      "lon": -76.9866,
+      "lat": 38.845665,
+      "lon": -76.988514,
       "aliases": []
     },
     {
-      "name": "Southern Avenue",
+      "name": "Georgia Av-Petworth",
       "lines": [
         "Green"
       ],
-      "lat": 38.8409,
-      "lon": -76.9754,
+      "lat": 38.937442,
+      "lon": -77.023463,
+      "aliases": []
+    },
+    {
+      "name": "Greenbelt",
+      "lines": [
+        "Green"
+      ],
+      "lat": 39.011154,
+      "lon": -76.91106,
+      "aliases": []
+    },
+    {
+      "name": "Hyattsville Crossing",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.965393,
+      "lon": -76.955884,
       "aliases": [
-        "Southern Ave"
+        "Prince George's Plaza",
+        "Prince Georges Plaza"
       ]
     },
     {
-      "name": "Naylor Road",
+      "name": "Navy Yard-Ballpark",
       "lines": [
         "Green"
       ],
-      "lat": 38.8516,
-      "lon": -76.9568,
-      "aliases": []
+      "lat": 38.876489,
+      "lon": -77.005088,
+      "aliases": [
+        "Navy Yard",
+        "Ballpark"
+      ]
+    },
+    {
+      "name": "Naylor Rd",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.851309,
+      "lon": -76.956265,
+      "aliases": [
+        "Naylor Road"
+      ]
+    },
+    {
+      "name": "Shaw-Howard U",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.913485,
+      "lon": -77.021914,
+      "aliases": [
+        "Shaw-Howard",
+        "Shaw"
+      ]
+    },
+    {
+      "name": "Southern Av",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.841094,
+      "lon": -76.975056,
+      "aliases": [
+        "Southern Avenue"
+      ]
     },
     {
       "name": "Suitland",
       "lines": [
         "Green"
       ],
-      "lat": 38.8485,
-      "lon": -76.932,
+      "lat": 38.843972,
+      "lon": -76.931872,
       "aliases": []
     },
     {
-      "name": "Branch Avenue",
+      "name": "U St",
       "lines": [
         "Green"
       ],
-      "lat": 38.827,
-      "lon": -76.912,
+      "lat": 38.91701,
+      "lon": -77.027498,
       "aliases": [
-        "Branch Ave"
+        "U Street"
       ]
+    },
+    {
+      "name": "Waterfront",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.87647,
+      "lon": -77.017507,
+      "aliases": []
+    },
+    {
+      "name": "West Hyattsville",
+      "lines": [
+        "Green"
+      ],
+      "lat": 38.955048,
+      "lon": -76.969579,
+      "aliases": []
     }
   ]
 }

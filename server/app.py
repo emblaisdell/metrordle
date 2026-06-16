@@ -84,7 +84,16 @@ def create_app(store: GameStore | None = None) -> Flask:
         system = get_system(key)
         if system is None:
             return jsonify({"error": f"unknown system: {key!r}"}), 400
-        game = games.create(system, seed=seed)
+
+        lines = body.get("lines")
+        if lines is not None:
+            if not isinstance(lines, list) or not lines:
+                return jsonify({"error": "lines must be a non-empty list"}), 400
+            unknown = [l for l in lines if l not in system.colors]
+            if unknown:
+                return jsonify({"error": f"unknown lines: {unknown}"}), 400
+
+        game = games.create(system, seed=seed, lines=lines)
         return jsonify(game.to_dict()), 201
 
     @app.get("/games/<game_id>")
@@ -112,6 +121,11 @@ def create_app(store: GameStore | None = None) -> Flask:
             return jsonify({
                 "error": f"unknown station: {name!r}",
                 "hint": f"GET /stations?system={game.system.key} lists valid names.",
+            }), 422
+        if not game.allows(station):
+            return jsonify({
+                "error": f"{station.name!r} is not on a selected line for this game",
+                "lines": list(game.lines),
             }), 422
 
         guess = game.make_guess(station)

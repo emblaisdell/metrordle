@@ -10,6 +10,7 @@ const ARROWS = {
 const els = {
   api: document.getElementById("api"),
   system: document.getElementById("system"),
+  lineFilter: document.getElementById("line-filter"),
   station: document.getElementById("station"),
   combobox: document.getElementById("combobox"),
   suggestions: document.getElementById("suggestions"),
@@ -26,8 +27,11 @@ let allStations = [];     // [{ name, lines }] for the current system
 let lineColors = {};      // line name -> hex color for the current system
 let lineLabels = {};      // line name -> short letter shown in the marker
 let markerShape = "circle"; // "circle" (WMATA) | "square" (SEPTA)
+let allLines = [];        // line names for the current system, in API order
+let selectedLines = new Set(); // lines currently in play
 let suggestions = [];     // currently shown stations
 let activeIndex = -1;     // highlighted suggestion
+let filterTimer = null;   // debounce for line-filter changes
 
 const currentSystem = () => els.system.value;
 
@@ -118,10 +122,47 @@ async function loadStations() {
     lineColors = data.colors || {};
     lineLabels = data.labels || {};
     markerShape = data.shape || "circle";
+    allLines = Object.keys(lineLabels);
+    selectedLines = new Set(allLines);   // everything in play by default
+    renderLineFilter();
   } catch (err) {
     setMessage("Could not load stations: " + err.message, "bad");
   }
 }
+
+// ---- Line filter ----
+
+const stationInPlay = (s) => s.lines.some((l) => selectedLines.has(l));
+
+function renderLineFilter() {
+  els.lineFilter.innerHTML = allLines
+    .map((l) => `
+      <button type="button" class="line-chip" data-line="${l}"
+              aria-pressed="${selectedLines.has(l)}" title="${l}">
+        ${lineDots([l])}
+        <span>${l}</span>
+      </button>`)
+    .join("");
+}
+
+function toggleLine(line) {
+  if (selectedLines.has(line)) {
+    if (selectedLines.size === 1) return;   // keep at least one line in play
+    selectedLines.delete(line);
+  } else {
+    selectedLines.add(line);
+  }
+  renderLineFilter();
+  closeSuggestions();
+  // Debounce so toggling several chips starts just one new game.
+  clearTimeout(filterTimer);
+  filterTimer = setTimeout(newGame, 500);
+}
+
+els.lineFilter.addEventListener("click", (e) => {
+  const chip = e.target.closest(".line-chip");
+  if (chip) toggleLine(chip.dataset.line);
+});
 
 // ---- Custom autocomplete combobox ----
 
@@ -149,9 +190,9 @@ function closeSuggestions() {
 
 function renderSuggestions(query) {
   const q = query.trim().toLowerCase();
-  // Prefix matches first, then any substring match; cap the list.
+  // Only stations on a selected line; prefix matches first, then substring.
   suggestions = allStations
-    .filter((s) => s.name.toLowerCase().includes(q))
+    .filter((s) => stationInPlay(s) && s.name.toLowerCase().includes(q))
     .sort((a, b) => {
       const ap = a.name.toLowerCase().startsWith(q) ? 0 : 1;
       const bp = b.name.toLowerCase().startsWith(q) ? 0 : 1;
@@ -214,15 +255,18 @@ document.addEventListener("click", (e) => {
 
 async function newGame() {
   try {
+    // Send the line subset only when it's a true subset (all selected => omit).
+    const lines = selectedLines.size < allLines.length ? [...selectedLines] : undefined;
     const game = await api("/games", {
       method: "POST",
-      body: JSON.stringify({ system: currentSystem() }),
+      body: JSON.stringify({ system: currentSystem(), lines }),
     });
     gameId = game.id;
     setGameOver(false);
     els.body.innerHTML = "";
     els.empty.hidden = false;
-    setMessage(`New ${game.system_name} game started. Good luck!`, "good");
+    const scope = lines ? `${lines.length} line${lines.length === 1 ? "" : "s"}` : "all lines";
+    setMessage(`New ${game.system_name} game (${scope}). Good luck!`, "good");
     els.station.value = "";
     els.station.focus();
   } catch (err) {

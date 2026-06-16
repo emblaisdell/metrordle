@@ -27,8 +27,8 @@ def test_find_station_by_name_and_alias():
     assert WMATA.find("Chinatown").name == "Gallery Place"
     assert WMATA.find("lenfant").name == "L'Enfant Plaza"
     assert WMATA.find("does not exist") is None
-    # 'Chinatown' resolves differently per system (no cross-system leakage).
-    assert PHILLY.find("Chinatown").name == "Chinatown"
+    # No cross-system leakage: WMATA stations don't resolve in Philly.
+    assert PHILLY.find("Lindenwold").name == "Lindenwold"
     assert PHILLY.find("Metro Center") is None
 
 
@@ -54,8 +54,8 @@ def test_compare_lines_all_some_none():
 
 
 def test_philly_multiline_hub():
-    eighth = PHILLY.find("8th Street")             # MFL + Broad St + PATCO
-    assert set(eighth.lines) == {"Market-Frankford", "Broad Street", "PATCO"}
+    hub = PHILLY.find("15th St/City Hall")         # L + B + T transfer
+    assert set(hub.lines) == {"Market-Frankford", "Broad Street", "Trolley"}
 
 
 # ---- direction ----
@@ -133,10 +133,29 @@ def test_philly_game(client):
     assert create.status_code == 201
     game_id = create.get_json()["id"]
     # A Philly station is valid here; a WMATA-only station is not.
-    ok = client.post(f"/games/{game_id}/guesses", json={"station": "8th Street"})
+    ok = client.post(f"/games/{game_id}/guesses", json={"station": "Lindenwold"})
     assert ok.status_code == 200
     bad = client.post(f"/games/{game_id}/guesses", json={"station": "Shady Grove"})
     assert bad.status_code == 422
+
+
+def test_line_subselection(client):
+    # Restrict the game to PATCO only; the secret must be a PATCO station.
+    create = client.post("/games", json={"system": "philly", "lines": ["PATCO"]})
+    assert create.status_code == 201
+    gid = create.get_json()["id"]
+    assert create.get_json()["lines"] == ["PATCO"]
+
+    # A PATCO station is allowed...
+    ok = client.post(f"/games/{gid}/guesses", json={"station": "Lindenwold"})
+    assert ok.status_code == 200
+    # ...but a valid Philly station NOT on PATCO is rejected (422).
+    off = client.post(f"/games/{gid}/guesses", json={"station": "Frankford Transit Center"})
+    assert off.status_code == 422
+
+    # Unknown line name on creation is a 400.
+    assert client.post("/games", json={"system": "philly", "lines": ["Q"]}).status_code == 400
+    assert client.post("/games", json={"system": "philly", "lines": []}).status_code == 400
 
 
 def test_unknown_system_on_create_returns_400(client):

@@ -67,6 +67,13 @@ class System:
     def names(self) -> list[str]:
         return [s.name for s in self.stations]
 
+    def stations_for(self, lines: list[str] | tuple[str, ...] | None) -> list[Station]:
+        """Stations served by at least one of ``lines`` (all stations if None)."""
+        if not lines:
+            return self.stations
+        wanted = set(lines)
+        return [s for s in self.stations if wanted.intersection(s.lines)]
+
 
 def _load_system(path: Path) -> System:
     with path.open(encoding="utf-8") as f:
